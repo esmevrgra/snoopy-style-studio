@@ -244,14 +244,6 @@ body {
 }
 
 
-
-
-
-/*entire button -- play button*/
-
-
-
-
 /*gift tag*/
 .purple-tag {
   position: absolute;
@@ -350,6 +342,7 @@ body {
   transform: scale(0.96);
   transition: opacity 0.35s ease, transform 0.35s ease;
   z-index: 50;
+  
 }
 
 /* when message screen is active */
@@ -376,5 +369,55 @@ body {
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1200px; /* adjust to match your design */
+  width: 1900px; /* adjust to match your design */
 }
+.o-button {
+  position: absolute;
+  top: 50%;        /* move it down onto the box */
+  left: 35%;       /* move it right onto the box */
+  width: 697px;
+  z-index: 2;      /* ABOVE the bubble */
+  cursor: pointer; /* optional if it’s clickable */
+}
+.bell {
+  position: absolute;
+  top: 45%;       
+  left: 33%;       
+  width: 273px;
+  z-index: 2; 
+}
+.flower {
+  position: absolute;
+  top: 33%;      
+  left: 63%;      
+  width: 293px;
+  z-index: 2; 
+}
+
+/* bell animation */
+@keyframes bell-ring-rest {
+  0%, 70%, 100% { transform: rotate(0deg); } /* resting */
+  75% { transform: rotate(-12deg); }
+  80% { transform: rotate(12deg); }
+  85% { transform: rotate(-8deg); }
+  90% { transform: rotate(8deg); }
+  95% { transform: rotate(0deg); }
+}
+
+.bell {
+  transform-origin: top center;
+  animation: bell-ring-rest 3s ease-in-out infinite;
+}
+
+/*flower animation*/
+@keyframes flower-twirl {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.screen-message:hover .flower {
+  transform-origin: center;
+  animation: flower-twirl 6s ease-in-out infinite;
+}
+
