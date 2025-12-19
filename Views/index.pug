@@ -1,43 +1,50 @@
-doctype html
-html
-  head
-    title Snoopy Style Studio
-    link(rel="stylesheet", href="/CSS/style.css")
-    link(rel="preconnect", href="https://fonts.googleapis.com")
-    link(rel="preconnect", href="https://fonts.gstatic.com" crossorigin)
-    link(href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&family=Patrick+Hand&display=swap" rel="stylesheet")
-    script(src="/JavaScript/main.js" defer)
+extends layout
 
-  body
-    main.container
+block content
+  .app
+    .scene
 
-      // title area
+
+      // title area updated
       .title-area
-        img.cloud(src="/Assets/title/light_purple_cloud.png", alt="")
-        img.cloud2(src="Assets/title/dark_purple_backgrd_cloud.png", alt="")
-        h1.title SNOOPY
-        p.subtitle style studio
-        img.santa(src="/Assets/title/santa_hat.png", alt="")
-        img.star.star-1(src="/Assets/title/star-1.png", alt="")
-        img.star.star-2(src="/Assets/title/star-2.png", alt="")
-        img.heart(src="/Assets/title/purple_heart_smiling.png", alt="")
+        h1.title-text SNOOPY 
+        p.subtitle style studio 
 
-      // snoopy
-      .character
-        img(src="/Assets/characters/snoopy-menu.png", alt="Snoopy")
+        img.dcloud(src="/assets/title/dark_purple_backgrd_cloud.png", alt="")
+        img.lcloud(src="/assets/title/light_purple_cloud.png", alt="")
 
-      // play button
-      .play-area
-        img(src="/Assets/play-button/play_btn_prl_rec.png", alt="")
-        button.play-btn
-          img(src="/Assets/play-button/triangle up.png", alt="Play")
 
-      // gift tag
+        img.santahat(src="/assets/title/santa_hat.png", alt="")
+        img.star.star-1(src="/assets/title/star-1.png", alt="")
+        img.star.star-2(src="/assets/title/star-2.png", alt="")
+        img.heart(src="/assets/title/purple_heart_smiling.png", alt="")
+
+
+      //snoopy updated
+      .character 
+        img.snoopy(src="/assets/characters/snoopy-menu.png", alt="Snoopy")
+
+
+      //play button updated
+      .play-button 
+        img.rec(src="/assets/play-button/play_btn_prl_rec.png", alt="")
+        img.circle(src="/assets/play-button/circle.png", alt="")
+        img.triangle(src="/assets/play-button/triangle.png", alt="Play")
+
+        img.gift(src="/assets/play-button/gift.png", alt="")
+        img.star.starr(src="/assets/play-button/Star.png", alt="")
+        img.star.star7(src="/assets/play-button/star-7.png", alt="")
+
+
+      //gift tag updated
       .gift-tag
-        img(src="/Assets/gift-tag/gift_tag_prpl.png", alt="")
-        p
-          | For Andrea ♡
-          br
-          | Love,
-          br
-          | your big sister
+        img.purple-tag(src="/assets/gift-tag/tag-hole.png", alt="")
+        img.star.star-a(src="/assets/gift-tag/star-a.png", alt="")
+        img.star.star-3(src="/assets/gift-tag/star-3.png", alt="")
+        img.tag-flwr(src="/assets/gift-tag/tag-flwr.png", alt="")
+        img.key(src="/assets/gift-tag/key.png", alt="")
+
+      .tag-text
+        p For Andrea ♡
+        p Love,
+        p your big sister

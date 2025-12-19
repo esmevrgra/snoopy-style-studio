@@ -1,147 +1,263 @@
-* {
-  box-sizing: border-box;
-}
-
+/*background */
+html,
 body {
   margin: 0;
-  min-height: 100vh;
-  background-image: url("public/images/title/background-bricks.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  font-family: "Baloo 2", cursive;
-}
-
-.container {
-  position: relative;
+  padding: 0;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
+  height: 100%;
+  background: url("/assets/title/brick-background.png") no-repeat center center fixed;background-size: cover;
 }
 
-/* TITLE */
+.app, .scene {
+  background: transparent !important;
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+}
+
+/*SNOOPY title*/
+.title-text {
+  position: relative;
+  text-align: center;
+
+  margin-top: 120px;
+  z-index: 5;
+
+  font-family: "Baloo 2", cursive;
+  font-size: 580px;
+  font-weight: 900;
+  letter-spacing: 6px;
+
+  color: #ffffff; /* top layer */
+
+  text-shadow:
+    15px 15px 0 #b7b2e3,   /* middle layer */
+    25px 25px 0 #8f8f8f; /* back layer */
+}
+.subtitle {
+  position: relative;
+  z-index: 8;
+
+  margin-top: -658px; /* pulls it closer to SNOOPY */
+  text-align: center;
+
+  font-family: "Fredoka", sans-serif;
+  font-size: 150px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+
+  color: #ffffff;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
 .title-area {
   position: absolute;
-  top: 4%;
+  top: 40px;
   left: 50%;
   transform: translateX(-50%);
-  text-align: center;
-  z-index: 5;
-}
-.cloud2 {
-  width: 1050px;
-}
-.cloud {
-  width: 1040px;
+  z-index: 10;
 }
 
-
-
-.title {
+/* dark cloud (back) */
+.dcloud {
   position: absolute;
-  top: 35px;
+  top: -50px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 72px;
-  color: #fffaf4;
-  text-shadow: 6px 6px 0 #cfcde6;
-  margin: 0;
+  width: 3300px;
+  z-index: 1;
 }
 
-.subtitle {
+/* light cloud (front) */
+.lcloud {
   position: absolute;
-  top: 115px;
+  top: 100px;        /* pushes it down */
   left: 50%;
   transform: translateX(-50%);
-  font-size: 22px;
-  color: #ffffff;
+  width: 3000px;
+  z-index: 2;
 }
 
-/* DECOR */
-.santa {
-  position: absolute;
-  top: 10px;
-  left: 40px;
-  width: 70px;
+.santahat {
+  position:absolute;
+  z-index: 9;
+  top: 150px;
+  left: -220px;
+  width: 450px;
 }
 
-.star {
-  position: absolute;
-  width: 36px;
+.star.star-1 {
+  position:absolute;
+  z-index: 9;
+  top: 764px;
+  left: -260px;
+  width: 350px;
 }
 
-.star-1 {
-  left: -30px;
-  top: 120px;
-}
-
-.star-2 {
-  right: -30px;
-  top: 80px;
+.star.star-2 {
+  position:absolute;
+  z-index: 9;
+  top: 264px;
+  right: -380px;
+  width: 350px;
 }
 
 .heart {
-  position: absolute;
-  right: 30px;
-  top: 130px;
-  width: 45px;
+  position:absolute;
+  z-index: 9;
+  top: 664px;
+  right: -82px;
+  width: 450px;
 }
 
-/* SNOOPY */
-.character {
+/*snoopy*/
+.snoopy {
   position: absolute;
-  bottom: 5%;
-  left: 5%;
+  bottom: 0;
+  left: 0;
+
+  width: 1700px;
 }
 
-.character img {
-  width: 280px;
-}
-
-/* PLAY BUTTON */
-.play-area {
+/*play button*/
+.rec {
   position: absolute;
-  bottom: 22%;
-  left: 50%;
+  bottom: 500px;  
+  left: 49%;
   transform: translateX(-50%);
-  z-index: 4;
+
+  width: 2400px;
 }
 
-.play-area img {
-  width: 360px;
-  filter: drop-shadow(0 8px 12px rgba(0, 0, 0, 0.15));
-}
-
-.play-btn {
+.circle {
   position: absolute;
-  inset: 0;
-  background: none;
-  border: none;
-  cursor: pointer;
+  bottom: 713px;  
+  left: 51%;
+  transform: translateX(-50%);
+
+  width: 500px;
 }
 
-.play-btn img {
-  width: 60px;
-}
-
-/* GIFT TAG */
-.gift-tag {
+.triangle {
   position: absolute;
-  top: 28%;
-  right: 6%;
-  transform: rotate(-6deg);
+  bottom: 801px;  
+  left: 51.8%;
+  transform: translateX(-50%);
+
+  width: 300px;
+}
+
+.gift {
+  position: absolute;
+  bottom: 770px;  
+  left: 33%;
+  transform: translateX(-50%);
+
+  width: 370px;
+}
+
+.star.starr {
+  position: absolute;
+  bottom: 600px;  
+  left: 36%;
+  transform: translateX(-50%);
+
+  width: 320px;
+}
+
+.star.star7 {
+  position: absolute;
+  bottom: 790px;  
+  right: 25%;
+  transform: translateX(-50%);
+
+  width: 426px;
+}
+
+/*gift tag*/
+.purple-tag {
+  position: absolute;
+  top: 840px;  
+  right: 80px;   
+  width: 1620px;      
+
+  transform: rotate(10deg);
+  transform-origin: center;
+
+  z-index: 6; 
+}
+
+.star.star-a {
+  position: absolute;
+  top: 1400px;  
+  right: 1%;
+  transform: translateX(-45%);
+
+  width: 160px;
+  z-index: 9;
+}
+.star.star-3 {
+  position: absolute;
+  top: 1611px;  
+  right: 20.7%;
+  transform: translateX(-45%);
+
+  width: 160px;
+  z-index: 7;
+}
+
+.tag-flwr {
+  position: absolute;
+  top: 1440px;  
+  right: 20%;
+  transform: translateX(-50%);
+
+  width: 206px;
   z-index: 6;
 }
 
-.gift-tag img {
-  width: 220px;
-  filter: drop-shadow(0 10px 18px rgba(0, 0, 0, 0.25));
+.key {
+  position: absolute;
+  top: 1840px;  
+  right: 17%;
+
+  width: 270px;
+  z-index: 9;
 }
 
-.gift-tag p {
+.tag-text {
   position: absolute;
-  inset: 0;
-  padding-top: 45px;
-  font-size: 18px;
-  color: #6f6f8f;
+  top: 1270px;
+  right: 260px;
+  width: 900px;
+
+  transform: rotate(-29deg);
+  z-index: 8;
 }
+
+.tag-text p {
+  margin: 0;
+
+  font-family: "Jersey 25";
+  font-size: 130px;
+  font-weight: 2500;
+
+  color: #8781c9;
+
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.45);
+
+  text-shadow:
+    2px 2px 0 rgba(255, 255, 255, 0.6),
+    5px 5px 0 rgba(183, 178, 227, 0.45);
+}
+
+
