@@ -209,6 +209,42 @@ body {
 }
 
 /*star animation for play button*/
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.play-button .star {
+  transform-origin: center;
+}
+
+.play-button:hover .starb {
+  animation: spin 3s linear infinite;
+}
+.play-button:hover .star {
+  transform: scale(1.05);
+}
+
+/*gift animation*/
+@keyframes shimmy {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(-12deg); }
+  50%  { transform: rotate(12deg); }
+  75%  { transform: rotate(-8deg); }
+  100% { transform: rotate(0deg); }
+}
+.gift {
+  transform-origin: top center;
+}
+.play-button:hover .gift {
+  animation: shimmy 2s ease-in-out infinite;
+}
+
+
+
 
 
 /*entire button -- play button*/
