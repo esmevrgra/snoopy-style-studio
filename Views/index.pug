@@ -4,47 +4,46 @@ block content
   .app
     .scene
 
+      // MAIN SCREEN (everything you already had)
+      .screen.screen-main
+        // title area updated
+        .title-area
+          h1.title-text SNOOPY
+          p.subtitle style studio
 
-      // title area updated
-      .title-area
-        h1.title-text SNOOPY 
-        p.subtitle style studio 
+          img.dcloud(src="/assets/title/dark_purple_backgrd_cloud.png", alt="")
+          img.lcloud(src="/assets/title/light_purple_cloud.png", alt="")
 
-        img.dcloud(src="/assets/title/dark_purple_backgrd_cloud.png", alt="")
-        img.lcloud(src="/assets/title/light_purple_cloud.png", alt="")
+          img.santahat(src="/assets/title/santa_hat.png", alt="")
+          img.star.star-1(src="/assets/title/star-1.png", alt="")
+          img.star.star-2(src="/assets/title/star-2.png", alt="")
+          img.heart(src="/assets/title/purple_heart_smiling.png", alt="")
 
+        // snoopy updated
+        .character
+          img.snoopy(src="/assets/characters/snoopy-menu.png", alt="Snoopy")
 
-        img.santahat(src="/assets/title/santa_hat.png", alt="")
-        img.star.star-1(src="/assets/title/star-1.png", alt="")
-        img.star.star-2(src="/assets/title/star-2.png", alt="")
-        img.heart(src="/assets/title/purple_heart_smiling.png", alt="")
+        // play button updated
+        .play-button
+          img.whole-play-button(src="/assets/play-button/whole-play-button.png", alt="")
+          img.gift(src="/assets/play-button/gift.png", alt="")
+          img.star.starr(src="/assets/play-button/Star.png", alt="")
+          img.star.star7(src="/assets/play-button/star-7.png", alt="")
+          img.star.starb(src="/assets/play-button/star-b.png", alt="")
 
+        // gift tag updated
+        .gift-tag
+          img.purple-tag(src="/assets/gift-tag/tag-hole.png", alt="")
+          img.star.star-a(src="/assets/gift-tag/star-a.png", alt="")
+          img.star.star-3(src="/assets/gift-tag/star-3.png", alt="")
+          img.tag-flwr(src="/assets/gift-tag/tag-flwr.png", alt="")
+          img.key(src="/assets/gift-tag/key.png", alt="")
 
-      //snoopy updated
-      .character 
-        img.snoopy(src="/assets/characters/snoopy-menu.png", alt="Snoopy")
+        .tag-text
+          p For Andrea ♡
+          p Love,
+          p your big sister
 
-
-      //play button updated
-      .play-button 
-        img.whole-play-button(src="/assets/play-button/whole-play-button.png", alt="")
-
-        img.gift(src="/assets/play-button/gift.png", alt="")
-        img.star.starr(src="/assets/play-button/Star.png", alt="")
-        img.star.star7(src="/assets/play-button/star-7.png", alt="")
-        img.star.starb(src="/assets/play-button/star-b.png", alt="")
-
-
-
-      //gift tag updated
-      .gift-tag
-        img.purple-tag(src="/assets/gift-tag/tag-hole.png", alt="")
-        img.star.star-a(src="/assets/gift-tag/star-a.png", alt="")
-        img.star.star-3(src="/assets/gift-tag/star-3.png", alt="")
-        img.tag-flwr(src="/assets/gift-tag/tag-flwr.png", alt="")
-        img.key(src="/assets/gift-tag/key.png", alt="")
-
-      .tag-text
-        p For Andrea ♡
-        p Love,
-        p your big sister
+      // MESSAGE SCREEN (sibling of main screen)
+      .screen.screen-message
+        img.message-bubble(src="/assets/notification-message/message-icon.png", alt="Message")

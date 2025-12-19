@@ -336,3 +336,45 @@ body {
 }
 
 
+/*screen for the notif message*/
+/* screens stack on top of each other */
+.screen {
+  position: absolute;
+  inset: 0;
+}
+
+/* start: show main, hide message */
+.screen-message {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.96);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 50;
+}
+
+/* when message screen is active */
+.screen-message.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* fade out main screen */
+.screen-main {
+  transition: opacity 0.25s ease;
+  z-index: 10;
+
+}
+.screen-main.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* center the bubble image */
+.message-bubble {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1200px; /* adjust to match your design */
+}
