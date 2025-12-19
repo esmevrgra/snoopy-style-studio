@@ -8,12 +8,30 @@ body {
   background: url("/assets/title/brick-background.png") no-repeat center center fixed;background-size: cover;
 }
 
-.app, .scene {
-  background: transparent !important;
-  width: 100%;
+.app {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 100vh;
-  position: relative;
 }
+
+
+.scene {
+  position: relative;
+  width: 5920px;
+  min-height: 2900px;
+  margin: 0 auto;
+  transform-origin: top center;
+}
+
+@media (max-width: 1920px) {
+  .scene {
+    transform: scale(calc(100vw / 1920));
+  }
+}
+
+
+
 
 /*SNOOPY title*/
 .title-text {
@@ -123,59 +141,80 @@ body {
 }
 
 /*play button*/
-.rec {
-  position: absolute;
-  bottom: 500px;  
-  left: 49%;
-  transform: translateX(-50%);
+/* =========================
+   PLAY BUTTON (FULL SETUP)
+   ========================= */
 
+/* wrapper — this is the hover target */
+.play-button {
+  position: absolute;
+  bottom: 150px;
+  left: 30%;
+
+  width: 2400px;
+  height: 900px; /* hover hitbox */
+
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+
+  cursor: pointer;
+}
+
+/* hover + click */
+.play-button:hover {
+  transform: scale(1.08);
+}
+
+.play-button:active {
+  transform: scale(0.96);
+}
+
+/* all images inside move together */
+.play-button img {
+  position: absolute;
+  pointer-events: none; /* prevents hover flicker */
+}
+
+/* base button image */
+.whole-play-button {
+  bottom: 0;
+  left: 0;
   width: 2400px;
 }
 
-.circle {
-  position: absolute;
-  bottom: 713px;  
-  left: 51%;
-  transform: translateX(-50%);
-
-  width: 500px;
-}
-
-.triangle {
-  position: absolute;
-  bottom: 801px;  
-  left: 51.8%;
-  transform: translateX(-50%);
-
-  width: 300px;
-}
-
+/* decorations */
 .gift {
-  position: absolute;
-  bottom: 770px;  
-  left: 33%;
-  transform: translateX(-50%);
-
+  bottom: 450px;
+  left: 5%;
   width: 370px;
 }
 
 .star.starr {
-  position: absolute;
-  bottom: 600px;  
-  left: 36%;
-  transform: translateX(-50%);
-
+  bottom: 280px;
+  left: 15%;
   width: 320px;
 }
 
 .star.star7 {
-  position: absolute;
-  bottom: 790px;  
-  right: 25%;
-  transform: translateX(-50%);
-
-  width: 426px;
+  bottom: 470px;
+  right: 5%;
+  width: 390px;
 }
+
+.star.starb {
+  bottom: 310px;
+  right: 15%;
+  width: 306px;
+}
+
+/*star animation for play button*/
+
+
+/*entire button -- play button*/
+
+
+
 
 /*gift tag*/
 .purple-tag {
