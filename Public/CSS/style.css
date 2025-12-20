@@ -543,7 +543,7 @@ body {
 }
 
 .message-center {
-  width: 2550px;
+  width: 2580px;
   position: absolute;
   top: 17%;
   left: 30%;
@@ -557,7 +557,7 @@ body {
 .letter-text{
   position: absolute;
   top: 30%;
-  left: 74%;
+  left: 76%;
   transform: translateX(-50%);
   margin: 0;
 
@@ -585,3 +585,65 @@ body {
   0 3px 0 currentColor,
   0 -3px 0 currentColor;
 }
+
+.okay-btn{
+  position: absolute;
+  right: 31%;
+  bottom: 30%;
+  width: 550px;
+  z-index: 5;
+  cursor: pointer;
+
+  /* start hidden */
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.92);
+
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.okay-btn.show{
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.okay-btn.show:hover { transform: scale(1.05); }
+.okay-btn.show:active { transform: scale(0.95); }
+
+
+
+@keyframes flw-d-twirl {
+  0%   { transform: rotate(0deg); }
+  50%  { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg); }
+}
+
+.flw-d {
+  position: absolute;
+  top: 33%;
+  left: 71%;
+  width: 433px;
+  z-index: 2;
+
+  transform-origin: 50% 50%;
+  animation: flw-d-twirl 6s ease-in-out infinite; 
+}
+
+@keyframes star-spin-pulse {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.07); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.s-d {
+  position: absolute;
+  top: 53%;
+  left: 27%;
+  width: 413px;
+  z-index: 2;
+
+  transform-origin: 50% 50%;
+  animation: star-spin-pulse 5s ease-in-out infinite;
+}
+
