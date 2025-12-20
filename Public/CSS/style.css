@@ -359,11 +359,25 @@ body {
   opacity: 1;
   pointer-events: auto;
   transform: scale(1);
-
 }
 .screen-main.hidden {
   opacity: 0;
   pointer-events: none;
+}
+
+/* OPENED MESSAGE SCREEN */
+.screen-message-open {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.96);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 60; /* above notif */
+}
+
+.screen-message-open.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
 }
 
 
@@ -526,4 +540,48 @@ body {
   text-align: center;
   width: 80%;
   z-index: 6;
+}
+
+.message-center {
+  width: 2550px;
+  position: absolute;
+  top: 17%;
+  left: 30%;
+}
+
+.letter-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.letter-text{
+  position: absolute;
+  top: 30%;
+  left: 74%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-family: "Jersey 25";
+  font-size: 112px;
+  color: #6f69a8;
+  text-shadow: 9px 6px 0px rgba(255, 255, 255, 0.9);
+  text-align: left;
+  width: 80%;
+  
+}
+
+.from {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-family: "Baloo 2";
+  font-size: 90px;
+  color:#7E79B2;
+  text-shadow:
+  3px 0 0 currentColor,
+ -3px 0 0 currentColor,
+  0 3px 0 currentColor,
+  0 -3px 0 currentColor;
 }
