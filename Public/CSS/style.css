@@ -356,12 +356,17 @@ body {
 .screen-main {
   transition: opacity 0.25s ease;
   z-index: 10;
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
 
 }
 .screen-main.hidden {
   opacity: 0;
   pointer-events: none;
 }
+
+
 
 /* center the bubble image */
 .message-bubble {
