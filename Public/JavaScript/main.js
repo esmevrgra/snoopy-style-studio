@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (okayTimer) clearTimeout(okayTimer);
         okayTimer = setTimeout(() => {
           okayBtn.classList.add("show");
-        }, 3000);
+        }, 2000);
       }
     }
 

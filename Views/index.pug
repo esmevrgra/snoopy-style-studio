@@ -7,10 +7,11 @@ block content
       // =========================
       // DESKTOP UI
       // =========================
-      .desktop-ui#desktopUI
+      .desktop-ui#desktopUI(data-ui="desktop")
 
         // MAIN SCREEN (desktop)
         .screen.screen-main
+          // title area updated
           .title-area
             h1.title-text SNOOPY
             p.subtitle style studio
@@ -21,11 +22,13 @@ block content
             img.santahat(src="/assets/title/santa_hat.png", alt="")
             img.star.star-1(src="/assets/title/star-1.png", alt="")
             img.star.star-2(src="/assets/title/star-2.png", alt="")
-            img.heart(src="/assets/title/purple_heart_smiling.png", alt="")
+            img.heart(src="/assets/title/heart_smiling.png", alt="")
 
+          // snoopy updated
           .character
-            img.snoopy(src="/assets/characters/snoopy-menu.png", alt="Snoopy")
+            img.snoopy(src="/assets/characters/pixel-snoopy.png", alt="Snoopy")
 
+          // play button updated
           .play-button
             img.whole-play-button(src="/assets/play-button/whole-play-button.png", alt="")
             img.gift(src="/assets/play-button/gift.png", alt="")
@@ -33,6 +36,7 @@ block content
             img.star.star7(src="/assets/play-button/star-7.png", alt="")
             img.star.starb(src="/assets/play-button/star-b.png", alt="")
 
+          // gift tag updated
           .gift-tag
             img.purple-tag(src="/assets/gift-tag/tag-hole.png", alt="")
             img.star.star-a(src="/assets/gift-tag/star-a.png", alt="")
@@ -50,6 +54,7 @@ block content
           .message-wrap
             img.message-bubble(src="/assets/notification-message/mes-box-empty.png", alt="Message")
 
+            // Wrap the button and the text together here:
             .open-trigger
               img.o-button(src="/assets/notification-message/o-button.png", alt="")
               p.message-sub tap to open...
@@ -66,7 +71,7 @@ block content
           .letter-wrap
             img.message-center(src="/assets/notification-message/sister-mes/message-center.png", alt="Letter")
 
-            p.from FROM:  SISTER 
+            p.from FROM:  SISTER
 
             p.letter-text
               | Hiii Beboo!
@@ -80,14 +85,14 @@ block content
               br
               |
               br
-              | I think Snoopy needs help getting 
+              | I think Snoopy needs help getting
               br
               | dressed for the winter!
               br
               br
               | Love,
               br
-              | Your Big Sister 
+              | Your Big Sister
 
             img.okay-btn(src="/assets/notification-message/sister-okay/okay-cat.png", alt="")
 
@@ -95,7 +100,63 @@ block content
             img.s-d(src="/assets/notification-message/sister-mes/star-d.png", alt="")
 
       // =========================
-      // MOBILE UI (we’ll build next)
+      // MOBILE UI
       // =========================
-      .mobile-ui#mobileUI
-        // (leave empty for now)
+      .mobile-ui#mobileUI(data-ui="mobile")
+        .mobile-stage
+
+          // MOBILE MAIN SCREEN
+          .screen.screen-main.screen-main-m
+            img.mobile-bg(src="/assets/mobile-design/mobile-background.png", alt="")
+
+            img.m-title(src="/assets/mobile-design/main-m/title-mobile.png", alt="")
+            img.m-tag(src="/assets/mobile-design/main-m/tag-mobile.png", alt="")
+            img.m-gift(src="/assets/mobile-design/main-m/gift-mobile.png", alt="")
+            img.m-star(src="/assets/mobile-design/main-m/star-a-mobile.png", alt="")
+            img.m-snoopy(src="/assets/mobile-design/main-m/snoopy-mobile.png", alt="")
+
+            // IMPORTANT: keep class "play-button"
+            .play-button.play-button-m
+              img.m-play(src="/assets/mobile-design/main-m/play-b-mobile.png", alt="")
+
+          // MOBILE NOTIF SCREEN
+          .screen.screen-message.screen-message-m
+            img.mobile-bg(src="/assets/mobile-design/mobile-background.png", alt="")
+
+            img.m-notif(src="/assets/mobile-design/notif-m/notif-mobile.png", alt="")
+            img.m-bell(src="/assets/mobile-design/notif-m/bell-mobile.png", alt="")
+            img.m-flower(src="/assets/mobile-design/notif-m/flower-a-mobile.png", alt="")
+
+            // IMPORTANT: keep class "open-trigger"
+            .open-trigger.open-trigger-m
+
+          // MOBILE OPEN MESSAGE SCREEN
+          .screen.screen-message-open.screen-message-open-m
+            img.mobile-bg(src="/assets/mobile-design/mobile-background.png", alt="")
+
+            img.m-msgbox(src="/assets/mobile-design/text-m/msg-box-mobile.png", alt="")
+            img.m-flowerb(src="/assets/mobile-design/text-m/flower-b-mobile.png", alt="")
+            img.m-starb(src="/assets/mobile-design/text-m/star-b-mobile.png", alt="")
+
+            p.letter-text.letter-text-m
+              | Hiii Beboo!
+              br
+              | Merry Christmas!!
+              br
+              br
+              | I love you more than all the presents
+              br
+              | under the Christmas tree hehe
+              br
+              br
+              | I think Snoopy needs help getting
+              br
+              | dressed for the winter!
+              br
+              br
+              | Love,
+              br
+              | Your Big Sister
+
+            // IMPORTANT: keep class "okay-btn"
+            img.okay-btn.okay-btn-m(src="/assets/mobile-design/text-m/okay-btn-mobile.png", alt="")

@@ -32,36 +32,32 @@ body {
    .desktop-ui { display: block; }
    .mobile-ui { display: none; }
    
-
-@media (max-width: 1920px) {
-  .scene {
-    transform: scale(calc(100vw / 1920));
-  }
-}
-/* =========================
-   MOBILE BREAKPOINT
-   ========================= */
-  @media (max-width: 768px) {
-  .desktop-ui { display: none; }
-  .mobile-ui { display: block; }
+   /* Desktop scaling (your design is 5920px wide) */
+   @media (max-width: 5920px) {
+     .scene {
+       transform: scale(calc(100vw / 5920));
+     }
+   }
+   
+   /* =========================
+      MOBILE BREAKPOINT
+      ========================= */
+   @media (max-width: 768px) {
+     .desktop-ui { display: none; }
+     .mobile-ui { display: block; }
+   
+     /* stop scaling + use normal layout */
+     .scene {
+       width: 100%;
+       min-height: 100vh;
+       transform: none !important;
+     }
+   
+     .app {
+       align-items: flex-start;
+     }
+   }   
   
-    /* stop the huge desktop scaling on mobile */
-    .scene {
-      width: 100%;
-      min-height: 100vh;
-      transform: none !important;
-    }
-  
-    /* optional: mobile should fill screen nicely */
-    .app {
-      align-items: flex-start;
-    }
-  }
-  
-
-
-
-
 /*SNOOPY title*/
 .title-text {
   position: relative;
@@ -175,7 +171,7 @@ body {
    ========================= */
 
 /* wrapper — this is the hover target */
-.play-button {
+.desktop-ui .play-button {
   position: absolute;
   bottom: 150px;
   left: 30%;
@@ -191,11 +187,11 @@ body {
 }
 
 /* hover + click */
-.play-button:hover {
+.desktop-ui .play-button:hover {
   transform: scale(1.08);
 }
 
-.play-button:active {
+.desktop-ui .play-button:active {
   transform: scale(0.96);
 }
 
@@ -250,7 +246,7 @@ body {
   transform-origin: center;
 }
 
-.play-button:hover .starb {
+.desktop-ui .play-button:hover .starb {
   animation: spin 3s linear infinite;
 }
 .play-button:hover .star {
@@ -268,7 +264,7 @@ body {
 .gift {
   transform-origin: top center;
 }
-.play-button:hover .gift {
+.desktop-ui .play-button:hover .gift {
   animation: shimmy 2s ease-in-out infinite;
 }
 
@@ -359,13 +355,14 @@ body {
 
 /*screen for the notif message*/
 /* screens stack on top of each other */
-.screen {
+.desktop-ui .screen {
   position: absolute;
   inset: 0;
 }
 
+
 /* start: show main, hide message */
-.screen-message {
+.desktop-ui .screen-message {
   opacity: 0;
   pointer-events: none;
   transform: scale(0.96);
@@ -375,27 +372,27 @@ body {
 }
 
 /* when message screen is active */
-.screen-message.active {
+.desktop-ui .screen-message.active {
   opacity: 1;
   pointer-events: auto;
   transform: scale(1);
 }
 
 /* fade out main screen */
-.screen-main {
+.desktop-ui .screen-main {
   transition: opacity 0.25s ease;
   z-index: 10;
   opacity: 1;
   pointer-events: auto;
   transform: scale(1);
 }
-.screen-main.hidden {
+.desktop-ui .screen-main.hidden {
   opacity: 0;
   pointer-events: none;
 }
 
 /* OPENED MESSAGE SCREEN */
-.screen-message-open {
+.desktop-ui .screen-message-open {
   opacity: 0;
   pointer-events: none;
   transform: scale(0.96);
@@ -403,7 +400,7 @@ body {
   z-index: 60; /* above notif */
 }
 
-.screen-message-open.active {
+.desktop-ui .screen-message-open.active {
   opacity: 1;
   pointer-events: auto;
   transform: scale(1);
@@ -511,7 +508,7 @@ body {
   100% { transform: rotate(360deg) scale(1); }
 }
 
-.screen-message:hover .flower {
+.desktop-ui .screen-message:hover .flower {
   transform-origin: center;
   animation: flower-twirl 6s ease-in-out infinite;
 }
@@ -676,3 +673,28 @@ body {
   animation: star-spin-pulse 5s ease-in-out infinite;
 }
 
+/* =========================
+   MOBILE UI LAYOUT
+   ========================= */
+   .mobile-stage {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+  }
+  
+  /* background fills the screen */
+  .mobile-bg {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+ /* make all mobile layers absolute EXCEPT the background */
+.mobile-stage img:not(.mobile-bg) {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+  
+  
