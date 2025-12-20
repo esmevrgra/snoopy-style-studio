@@ -371,20 +371,67 @@ body {
   transform: translate(-50%, -50%);
   width: 1900px; /* adjust to match your design */
 }
-.o-button {
+/* --- BUTTON --- */
+/* The container for the button and text */
+.open-trigger {
   position: absolute;
-  top: 50%;        /* move it down onto the box */
-  left: 35%;       /* move it right onto the box */
-  width: 697px;
-  z-index: 2;      /* ABOVE the bubble */
-  cursor: pointer; /* optional if it’s clickable */
+  top: 50%;        /* Matching your o-button top */
+  left: 35%;       /* Matching your o-button left */
+  width: 697px;    /* Matching your o-button width */
+  height: 200px;   /* Adjust height as needed to cover the text area */
+  z-index: 10;
+  cursor: pointer;
 }
+
+/* Individual elements inside the trigger */
+.o-button, .message-sub {
+  transition: transform 0.3s ease;
+  pointer-events: none; /* This ensures the 'trigger' div handles the hover */
+}
+
+.o-button {
+  position: relative; /* Changed from absolute since parent is now absolute */
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.message-sub {
+  position: absolute;
+  top: 20%; 
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  margin: 0;
+  font-family: "Baloo 2";
+  font-size: 85px;
+  font-weight: 500;
+  color: #6f69a8;
+  text-align: center;
+  width: 80%;
+  white-space: nowrap;
+}
+
+/*button animation*/
+.open-trigger:hover .o-button {
+  transform: scale(1.1);
+}
+.open-trigger:hover .message-sub {
+  transform: translateX(-50%) scale(1.1);
+}
+.open-trigger:active .o-button {
+  transform: scale(0.95);
+}
+.open-trigger:active .message-sub {
+  transform: translateX(-50%) scale(0.95);
+}
+
+
 .bell {
   position: absolute;
-  top: 45%;       
+  top: 41%;       
   left: 33%;       
   width: 273px;
-  z-index: 2; 
+  z-index: 9; 
 }
 .flower {
   position: absolute;
@@ -421,3 +468,57 @@ body {
   animation: flower-twirl 6s ease-in-out infinite;
 }
 
+
+/* TEXT (starter placement — you can tweak top/left) */
+.message-title{
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-family: "Jersey 25";
+  font-size: 140px;
+  color: #6f69a8;
+  text-shadow: 9px 6px 0px rgba(255, 255, 255, 0.9);
+
+  text-align: center;
+  width: 80%;
+}
+
+
+.message-title2 {
+  position: absolute;
+  top: 44.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-family: "Jersey 25";
+  font-size: 140px;
+  color: #6f69a8;
+  text-shadow: 9px 6px 0px rgba(255, 255, 255, 0.9);
+  text-align: center;
+  width: 80%;
+}
+
+.mess {
+  position: absolute;
+  top: 30.3%;
+  left: 58.8%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-family: "Baloo 2";
+  font-size: 70px;
+  font-weight: 700%;
+  text-shadow:
+  1px 0 0 currentColor,
+ -1px 0 0 currentColor,
+  0 1px 0 currentColor,
+  0 -1px 0 currentColor;
+  color: #6f69a8;
+  text-align: center;
+  width: 80%;
+  z-index: 6;
+}
