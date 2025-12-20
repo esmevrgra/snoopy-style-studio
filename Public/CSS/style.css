@@ -5,8 +5,11 @@ body {
   padding: 0;
   width: 100%;
   height: 100%;
-  background: url("/assets/title/brick-background.png") no-repeat center center fixed;background-size: cover;
+  overflow-x: hidden;
+  background: url("/assets/title/brick-background.png") no-repeat center center fixed;
+  background-size: cover;
 }
+
 
 .app {
   display: flex;
@@ -14,7 +17,6 @@ body {
   align-items: center;
   min-height: 100vh;
 }
-
 
 .scene {
   position: relative;
@@ -24,11 +26,38 @@ body {
   transform-origin: top center;
 }
 
+/* =========================
+   DESKTOP vs MOBILE UI TOGGLES
+   ========================= */
+   .desktop-ui { display: block; }
+   .mobile-ui { display: none; }
+   
+
 @media (max-width: 1920px) {
   .scene {
     transform: scale(calc(100vw / 1920));
   }
 }
+/* =========================
+   MOBILE BREAKPOINT
+   ========================= */
+  @media (max-width: 768px) {
+  .desktop-ui { display: none; }
+  .mobile-ui { display: block; }
+  
+    /* stop the huge desktop scaling on mobile */
+    .scene {
+      width: 100%;
+      min-height: 100vh;
+      transform: none !important;
+    }
+  
+    /* optional: mobile should fill screen nicely */
+    .app {
+      align-items: flex-start;
+    }
+  }
+  
 
 
 

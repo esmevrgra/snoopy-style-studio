@@ -4,91 +4,98 @@ block content
   .app
     .scene
 
-      // MAIN SCREEN (everything you already had)
-      .screen.screen-main
-        // title area updated
-        .title-area
-          h1.title-text SNOOPY
-          p.subtitle style studio
+      // =========================
+      // DESKTOP UI
+      // =========================
+      .desktop-ui#desktopUI
 
-          img.dcloud(src="/assets/title/dark_purple_backgrd_cloud.png", alt="")
-          img.lcloud(src="/assets/title/light_purple_cloud.png", alt="")
+        // MAIN SCREEN (desktop)
+        .screen.screen-main
+          .title-area
+            h1.title-text SNOOPY
+            p.subtitle style studio
 
-          img.santahat(src="/assets/title/santa_hat.png", alt="")
-          img.star.star-1(src="/assets/title/star-1.png", alt="")
-          img.star.star-2(src="/assets/title/star-2.png", alt="")
-          img.heart(src="/assets/title/purple_heart_smiling.png", alt="")
+            img.dcloud(src="/assets/title/dark_purple_backgrd_cloud.png", alt="")
+            img.lcloud(src="/assets/title/light_purple_cloud.png", alt="")
 
-        // snoopy updated
-        .character
-          img.snoopy(src="/assets/characters/snoopy-menu.png", alt="Snoopy")
+            img.santahat(src="/assets/title/santa_hat.png", alt="")
+            img.star.star-1(src="/assets/title/star-1.png", alt="")
+            img.star.star-2(src="/assets/title/star-2.png", alt="")
+            img.heart(src="/assets/title/purple_heart_smiling.png", alt="")
 
-        // play button updated
-        .play-button
-          img.whole-play-button(src="/assets/play-button/whole-play-button.png", alt="")
-          img.gift(src="/assets/play-button/gift.png", alt="")
-          img.star.starr(src="/assets/play-button/Star.png", alt="")
-          img.star.star7(src="/assets/play-button/star-7.png", alt="")
-          img.star.starb(src="/assets/play-button/star-b.png", alt="")
+          .character
+            img.snoopy(src="/assets/characters/snoopy-menu.png", alt="Snoopy")
 
-        // gift tag updated
-        .gift-tag
-          img.purple-tag(src="/assets/gift-tag/tag-hole.png", alt="")
-          img.star.star-a(src="/assets/gift-tag/star-a.png", alt="")
-          img.star.star-3(src="/assets/gift-tag/star-3.png", alt="")
-          img.tag-flwr(src="/assets/gift-tag/tag-flwr.png", alt="")
-          img.key(src="/assets/gift-tag/key.png", alt="")
+          .play-button
+            img.whole-play-button(src="/assets/play-button/whole-play-button.png", alt="")
+            img.gift(src="/assets/play-button/gift.png", alt="")
+            img.star.starr(src="/assets/play-button/Star.png", alt="")
+            img.star.star7(src="/assets/play-button/star-7.png", alt="")
+            img.star.starb(src="/assets/play-button/star-b.png", alt="")
 
-        .tag-text
-          p For Andrea ♡
-          p Love,
-          p your big sister
+          .gift-tag
+            img.purple-tag(src="/assets/gift-tag/tag-hole.png", alt="")
+            img.star.star-a(src="/assets/gift-tag/star-a.png", alt="")
+            img.star.star-3(src="/assets/gift-tag/star-3.png", alt="")
+            img.tag-flwr(src="/assets/gift-tag/tag-flwr.png", alt="")
+            img.key(src="/assets/gift-tag/key.png", alt="")
 
-      // MESSAGE SCREEN (sibling of main screen)
-      .screen.screen-message
-        .message-wrap
-          img.message-bubble(src="/assets/notification-message/mes-box-empty.png", alt="Message")
+          .tag-text
+            p For Andrea ♡
+            p Love,
+            p your big sister
 
-          // Wrap the button and the text together here:
-          .open-trigger
-            img.o-button(src="/assets/notification-message/o-button.png", alt="")
-            p.message-sub tap to open...
+        // MESSAGE SCREEN (desktop)
+        .screen.screen-message
+          .message-wrap
+            img.message-bubble(src="/assets/notification-message/mes-box-empty.png", alt="Message")
 
-          img.bell(src="/assets/notification-message/bell.png", alt="")
-          img.flower(src="/assets/notification-message/flower.png", alt="")
+            .open-trigger
+              img.o-button(src="/assets/notification-message/o-button.png", alt="")
+              p.message-sub tap to open...
 
-          p.message-title you have a message from
-          p.message-title2 your sister!
-          p.mess MESSAGES (1)
+            img.bell(src="/assets/notification-message/bell.png", alt="")
+            img.flower(src="/assets/notification-message/flower.png", alt="")
 
-      // OPENED MESSAGE SCREEN
-      .screen.screen-message-open
-        .letter-wrap
-          img.message-center(src="/assets/notification-message/sister-mes/message-center.png", alt="Letter")
+            p.message-title you have a message from
+            p.message-title2 your sister!
+            p.mess MESSAGES (1)
 
-          p.from FROM:  SISTER 
+        // OPENED MESSAGE SCREEN (desktop)
+        .screen.screen-message-open
+          .letter-wrap
+            img.message-center(src="/assets/notification-message/sister-mes/message-center.png", alt="Letter")
 
-          p.letter-text
-            | Hiii Beboo!
-            br
-            | Merry Christmas!!
-            br
-            br
-            | I love you more than all the presents
-            br
-            | under the Christmas tree hehe
-            br
-            |
-            br
-            | I think Snoopy needs help getting 
-            br
-            | dressed for the winter!
-            br
-            br
-            | Love,
-            br
-            | Your Big Sister 
-          img.okay-btn(src="/assets/notification-message/sister-okay/okay-cat.png", alt="")
+            p.from FROM:  SISTER 
 
-          img.flw-d(src="/assets/notification-message/sister-mes/flower-d.png", alt="")
-          img.s-d(src="/assets/notification-message/sister-mes/star-d.png", alt="")
+            p.letter-text
+              | Hiii Beboo!
+              br
+              | Merry Christmas!!
+              br
+              br
+              | I love you more than all the presents
+              br
+              | under the Christmas tree hehe
+              br
+              |
+              br
+              | I think Snoopy needs help getting 
+              br
+              | dressed for the winter!
+              br
+              br
+              | Love,
+              br
+              | Your Big Sister 
+
+            img.okay-btn(src="/assets/notification-message/sister-okay/okay-cat.png", alt="")
+
+            img.flw-d(src="/assets/notification-message/sister-mes/flower-d.png", alt="")
+            img.s-d(src="/assets/notification-message/sister-mes/star-d.png", alt="")
+
+      // =========================
+      // MOBILE UI (we’ll build next)
+      // =========================
+      .mobile-ui#mobileUI
+        // (leave empty for now)
