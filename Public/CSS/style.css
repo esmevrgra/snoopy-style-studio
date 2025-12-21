@@ -673,28 +673,78 @@ body {
   animation: star-spin-pulse 5s ease-in-out infinite;
 }
 
-/* =========================
-   MOBILE UI LAYOUT
+  
+  /* =========================
+   MOBILE UI
    ========================= */
-   .mobile-stage {
+@media (max-width: 768px) {
+  .mobile-stage {
     position: relative;
-    width: 100%;
-    min-height: 100vh;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
   }
-  
-  /* background fills the screen */
-  .mobile-bg {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  
- /* make all mobile layers absolute EXCEPT the background */
-.mobile-stage img:not(.mobile-bg) {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
 
-  
-  
+  /* background fills phone */
+  .mobile-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* all other layers */
+  .mobile-stage img:not(.mobile-bg) {
+    position: absolute;
+    height: auto;
+  }
+
+  /* clickable hotspots */
+  .open-trigger-m,
+  .play-button-m {
+    position: absolute;
+    z-index: 50;
+    background: transparent;
+  }
+
+  .open-trigger-m img,
+  .play-button-m img {
+    pointer-events: none;
+  }
+
+  /* MAIN screen assets */
+  .m-title  { top: 7%;  left: 50%; transform: translateX(-50%); width: 80%; z-index: 10; }
+  .m-tag    { top: 20%; left: 50%; transform: translateX(-50%); width: 78%; z-index: 11; }
+  .m-gift   { top: 34%; left: 10%; width: 20%; z-index: 12; }
+  .m-star   { top: 30%; right: 10%; width: 16%; z-index: 12; }
+  .m-snoopy { bottom: 0; left: 50%; transform: translateX(-50%); width: 95%; z-index: 9; }
+
+  .play-button-m {
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    height: 14%;
+  }
+
+  .m-play {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  /* NOTIF screen assets */
+  .m-notif  { top: 18%; left: 50%; transform: translateX(-50%); width: 90%; z-index: 10; }
+  .m-bell   { top: 22%; left: 18%; width: 16%; z-index: 11; }
+  .m-flower { top: 14%; right: 10%; width: 18%; z-index: 9; }
+
+  .open-trigger-m {
+    top: 47%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 55%;
+    height: 12%;
+  }
+}
