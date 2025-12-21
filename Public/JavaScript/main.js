@@ -96,6 +96,8 @@ document.addEventListener("DOMContentLoaded", () => {
     function showOpenMessage() {
       // Click sound when "tap to open..." is pressed
       playClick();
+      setTimeout(playNotif, 70);
+
     
       notifScreen.classList.remove("active");
       openScreen.classList.add("active");
