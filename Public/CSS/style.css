@@ -802,11 +802,79 @@ body.game-mode {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  object-fit: cover;
+  overflow-x: hidden;
   z-index: 0;
 }
 
 .screen-game .game-ui {
   position: relative;
   z-index: 1;
+}
+
+.screen-game .game-ui {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+.screen-game .gaming-logo {
+  position: absolute;
+  top: 10px;
+  left: 20%;
+  transform: translateX(-50%);
+  width: 1600px;
+  z-index: 9;
+}
+
+.screen-game .exit-btn {
+  position: absolute;
+  top: 120px;
+  right: 1280px;
+  width: 700px;
+  cursor: pointer;
+  z-index: 5;
+
+}
+
+.screen-game .reset-btn {
+  position: absolute;
+  top: 120px;
+  right: 380px;
+  width: 700px;
+  cursor: pointer;
+  z-index: 5;
+
+}
+
+.screen-game .stand {
+  position: absolute;
+  bottom: 0px;
+  right: 1900px;
+  width: 1700px;
+  z-index: 5;
+}
+
+.screen-game .snoop {
+  position: absolute;
+  bottom: 190px;
+  right: 2100px;
+  width: 1285px;
+  z-index: 5;
+}
+
+.screen-game .c1 {
+  position: absolute;
+  bottom: 1490px;
+  left: 750px;
+  width: 805px;
+  z-index: 5;
+}
+
+.screen-game .t1-1 {
+  position: absolute;
+  bottom: 1590px;
+  left: 400px;
+  width: 205px;
+  z-index: 5;
+
 }
