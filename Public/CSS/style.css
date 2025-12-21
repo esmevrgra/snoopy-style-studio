@@ -9,6 +9,10 @@ body {
   background: url("/assets/title/brick-background.png") no-repeat center center fixed;
   background-size: cover;
 }
+body.game-mode {
+  background: url("/assets/gameing-screen/gaming-background.png") no-repeat center center fixed;
+  background-size: cover;
+}
 
 
 .app {
@@ -29,40 +33,39 @@ body {
 /* =========================
    DESKTOP vs MOBILE UI TOGGLES
    ========================= */
-   .desktop-ui { display: block; }
-   .mobile-ui { display: none; }
-   
-   /* Desktop scaling (your design is 5920px wide) */
-   @media (max-width: 5920px) {
-     .scene {
-       transform: scale(calc(100vw / 5920));
-     }
-   }
-   
-   /* =========================
-      MOBILE BREAKPOINT
-      ========================= */
-   @media (max-width: 768px) {
-     .desktop-ui { display: none; }
-     .mobile-ui { display: block; }
-   
-     /* stop scaling + use normal layout */
-     .scene {
-       width: 100%;
-       min-height: 100vh;
-       transform: none !important;
-     }
-   
-     .app {
-       align-items: flex-start;
-     }
-   }   
-  
+.desktop-ui { display: block; }
+.mobile-ui { display: none; }
+
+/* Desktop scaling (your design is 5920px wide) */
+@media (max-width: 5920px) {
+  .scene {
+    transform: scale(calc(100vw / 5920));
+  }
+}
+
+/* =========================
+   MOBILE BREAKPOINT
+   ========================= */
+@media (max-width: 768px) {
+  .desktop-ui { display: none; }
+  .mobile-ui { display: block; }
+
+  /* stop scaling + use normal layout */
+  .scene {
+    width: 100%;
+    min-height: 100vh;
+    transform: none !important;
+  }
+
+  .app {
+    align-items: flex-start;
+  }
+}
+
 /*SNOOPY title*/
 .title-text {
   position: relative;
   text-align: center;
-
   margin-top: 120px;
   z-index: 5;
 
@@ -71,17 +74,18 @@ body {
   font-weight: 900;
   letter-spacing: 6px;
 
-  color: #ffffff; /* top layer */
+  color: #ffffff;
 
   text-shadow:
-    15px 15px 0 #b7b2e3,   /* middle layer */
-    25px 25px 0 #8f8f8f; /* back layer */
+    15px 15px 0 #b7b2e3,
+    25px 25px 0 #8f8f8f;
 }
+
 .subtitle {
   position: relative;
   z-index: 8;
 
-  margin-top: -658px; /* pulls it closer to SNOOPY */
+  margin-top: -658px;
   text-align: center;
 
   font-family: "Fredoka", sans-serif;
@@ -94,7 +98,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 
 .title-area {
   position: absolute;
@@ -117,7 +120,7 @@ body {
 /* light cloud (front) */
 .lcloud {
   position: absolute;
-  top: 100px;        /* pushes it down */
+  top: 100px;
   left: 50%;
   transform: translateX(-50%);
   width: 3000px;
@@ -125,7 +128,7 @@ body {
 }
 
 .santahat {
-  position:absolute;
+  position: absolute;
   z-index: 9;
   top: 150px;
   left: -220px;
@@ -133,7 +136,7 @@ body {
 }
 
 .star.star-1 {
-  position:absolute;
+  position: absolute;
   z-index: 9;
   top: 764px;
   left: -260px;
@@ -141,7 +144,7 @@ body {
 }
 
 .star.star-2 {
-  position:absolute;
+  position: absolute;
   z-index: 9;
   top: 264px;
   right: -380px;
@@ -149,7 +152,7 @@ body {
 }
 
 .heart {
-  position:absolute;
+  position: absolute;
   z-index: 9;
   top: 664px;
   right: -82px;
@@ -161,7 +164,6 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-
   width: 1700px;
 }
 
@@ -177,7 +179,7 @@ body {
   left: 30%;
 
   width: 2400px;
-  height: 900px; /* hover hitbox */
+  height: 900px;
 
   transform: scale(1);
   transform-origin: center;
@@ -198,7 +200,7 @@ body {
 /* all images inside move together */
 .play-button img {
   position: absolute;
-  pointer-events: none; /* prevents hover flicker */
+  pointer-events: none;
 }
 
 /* base button image */
@@ -235,13 +237,10 @@ body {
 
 /*star animation for play button*/
 @keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
+
 .play-button .star {
   transform-origin: center;
 }
@@ -249,6 +248,7 @@ body {
 .desktop-ui .play-button:hover .starb {
   animation: spin 3s linear infinite;
 }
+
 .play-button:hover .star {
   transform: scale(1.05);
 }
@@ -261,61 +261,59 @@ body {
   75%  { transform: rotate(-8deg); }
   100% { transform: rotate(0deg); }
 }
+
 .gift {
   transform-origin: top center;
 }
+
 .desktop-ui .play-button:hover .gift {
   animation: shimmy 2s ease-in-out infinite;
 }
 
-
 /*gift tag*/
 .purple-tag {
   position: absolute;
-  top: 840px;  
-  right: 80px;   
-  width: 1620px;      
+  top: 840px;
+  right: 80px;
+  width: 1620px;
 
   transform: rotate(10deg);
   transform-origin: center;
 
-  z-index: 6; 
+  z-index: 6;
 }
 
 .star.star-a {
   position: absolute;
-  top: 1400px;  
+  top: 1400px;
   right: 1%;
   transform: translateX(-45%);
-
   width: 160px;
   z-index: 9;
 }
+
 .star.star-3 {
   position: absolute;
-  top: 1611px;  
+  top: 1611px;
   right: 20.7%;
   transform: translateX(-45%);
-
   width: 160px;
   z-index: 7;
 }
 
 .tag-flwr {
   position: absolute;
-  top: 1440px;  
+  top: 1440px;
   right: 20%;
   transform: translateX(-50%);
-
   width: 206px;
   z-index: 6;
 }
 
 .key {
   position: absolute;
-  top: 1840px;  
+  top: 1840px;
   right: 17%;
-
   width: 270px;
   z-index: 9;
 }
@@ -352,14 +350,12 @@ body {
     5px 5px 0 rgba(183, 178, 227, 0.45);
 }
 
-
 /*screen for the notif message*/
 /* screens stack on top of each other */
 .desktop-ui .screen {
   position: absolute;
   inset: 0;
 }
-
 
 /* start: show main, hide message */
 .desktop-ui .screen-message {
@@ -368,7 +364,6 @@ body {
   transform: scale(0.96);
   transition: opacity 0.35s ease, transform 0.35s ease;
   z-index: 50;
-  
 }
 
 /* when message screen is active */
@@ -386,6 +381,7 @@ body {
   pointer-events: auto;
   transform: scale(1);
 }
+
 .desktop-ui .screen-main.hidden {
   opacity: 0;
   pointer-events: none;
@@ -397,7 +393,7 @@ body {
   pointer-events: none;
   transform: scale(0.96);
   transition: opacity 0.35s ease, transform 0.35s ease;
-  z-index: 60; /* above notif */
+  z-index: 60;
 }
 
 .desktop-ui .screen-message-open.active {
@@ -406,24 +402,23 @@ body {
   transform: scale(1);
 }
 
-
-
 /* center the bubble image */
 .message-bubble {
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 1900px; /* adjust to match your design */
+  width: 1900px;
 }
+
 /* --- BUTTON --- */
 /* The container for the button and text */
 .open-trigger {
   position: absolute;
-  top: 50%;        /* Matching your o-button top */
-  left: 35%;       /* Matching your o-button left */
-  width: 697px;    /* Matching your o-button width */
-  height: 200px;   /* Adjust height as needed to cover the text area */
+  top: 50%;
+  left: 35%;
+  width: 697px;
+  height: 200px;
   z-index: 10;
   cursor: pointer;
 }
@@ -431,11 +426,11 @@ body {
 /* Individual elements inside the trigger */
 .o-button, .message-sub {
   transition: transform 0.3s ease;
-  pointer-events: none; /* This ensures the 'trigger' div handles the hover */
+  pointer-events: none;
 }
 
 .o-button {
-  position: relative; /* Changed from absolute since parent is now absolute */
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
@@ -443,7 +438,7 @@ body {
 
 .message-sub {
   position: absolute;
-  top: 20%; 
+  top: 20%;
   left: 50%;
   transform: translateX(-50%) scale(1);
   margin: 0;
@@ -460,35 +455,38 @@ body {
 .open-trigger:hover .o-button {
   transform: scale(1.1);
 }
+
 .open-trigger:hover .message-sub {
   transform: translateX(-50%) scale(1.1);
 }
+
 .open-trigger:active .o-button {
   transform: scale(0.95);
 }
+
 .open-trigger:active .message-sub {
   transform: translateX(-50%) scale(0.95);
 }
 
-
 .bell {
   position: absolute;
-  top: 41%;       
-  left: 33%;       
+  top: 41%;
+  left: 33%;
   width: 273px;
-  z-index: 9; 
+  z-index: 9;
 }
+
 .flower {
   position: absolute;
-  top: 33%;      
-  left: 63%;      
+  top: 33%;
+  left: 63%;
   width: 293px;
-  z-index: 2; 
+  z-index: 2;
 }
 
 /* bell animation */
 @keyframes bell-ring-rest {
-  0%, 70%, 100% { transform: rotate(0deg); } /* resting */
+  0%, 70%, 100% { transform: rotate(0deg); }
   75% { transform: rotate(-12deg); }
   80% { transform: rotate(12deg); }
   85% { transform: rotate(-8deg); }
@@ -513,9 +511,8 @@ body {
   animation: flower-twirl 6s ease-in-out infinite;
 }
 
-
 /* TEXT (starter placement — you can tweak top/left) */
-.message-title{
+.message-title {
   position: absolute;
   top: 40%;
   left: 50%;
@@ -531,7 +528,6 @@ body {
   width: 80%;
 }
 
-
 .message-title2 {
   position: absolute;
   top: 44.5%;
@@ -543,6 +539,7 @@ body {
   font-size: 140px;
   color: #6f69a8;
   text-shadow: 9px 6px 0px rgba(255, 255, 255, 0.9);
+
   text-align: center;
   width: 80%;
 }
@@ -557,11 +554,13 @@ body {
   font-family: "Baloo 2";
   font-size: 70px;
   font-weight: 700%;
+
   text-shadow:
-  1px 0 0 currentColor,
- -1px 0 0 currentColor,
-  0 1px 0 currentColor,
-  0 -1px 0 currentColor;
+    1px 0 0 currentColor,
+   -1px 0 0 currentColor,
+    0 1px 0 currentColor,
+    0 -1px 0 currentColor;
+
   color: #6f69a8;
   text-align: center;
   width: 80%;
@@ -580,7 +579,7 @@ body {
   inset: 0;
 }
 
-.letter-text{
+.letter-text {
   position: absolute;
   top: 30%;
   left: 76%;
@@ -591,9 +590,9 @@ body {
   font-size: 112px;
   color: #6f69a8;
   text-shadow: 9px 6px 0px rgba(255, 255, 255, 0.9);
+
   text-align: left;
   width: 80%;
-  
 }
 
 .from {
@@ -602,17 +601,19 @@ body {
   left: 40%;
   transform: translateX(-50%);
   margin: 0;
+
   font-family: "Baloo 2";
   font-size: 90px;
-  color:#7E79B2;
+  color: #7E79B2;
+
   text-shadow:
-  3px 0 0 currentColor,
- -3px 0 0 currentColor,
-  0 3px 0 currentColor,
-  0 -3px 0 currentColor;
+    3px 0 0 currentColor,
+   -3px 0 0 currentColor,
+    0 3px 0 currentColor,
+    0 -3px 0 currentColor;
 }
 
-.okay-btn{
+.okay-btn {
   position: absolute;
   right: 31%;
   bottom: 30%;
@@ -620,7 +621,6 @@ body {
   z-index: 5;
   cursor: pointer;
 
-  /* start hidden */
   opacity: 0;
   pointer-events: none;
   transform: scale(0.92);
@@ -628,7 +628,7 @@ body {
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
-.okay-btn.show{
+.okay-btn.show {
   opacity: 1;
   pointer-events: auto;
   transform: scale(1);
@@ -636,8 +636,6 @@ body {
 
 .okay-btn.show:hover { transform: scale(1.05); }
 .okay-btn.show:active { transform: scale(0.95); }
-
-
 
 @keyframes flw-d-twirl {
   0%   { transform: rotate(0deg); }
@@ -653,7 +651,7 @@ body {
   z-index: 2;
 
   transform-origin: 50% 50%;
-  animation: flw-d-twirl 6s ease-in-out infinite; 
+  animation: flw-d-twirl 6s ease-in-out infinite;
 }
 
 @keyframes star-spin-pulse {
@@ -673,8 +671,7 @@ body {
   animation: star-spin-pulse 5s ease-in-out infinite;
 }
 
-  
-  /* =========================
+/* =========================
    MOBILE UI
    ========================= */
 @media (max-width: 768px) {
@@ -698,6 +695,37 @@ body {
   .mobile-stage img:not(.mobile-bg) {
     position: absolute;
     height: auto;
+  }
+
+  .mobile-ui .screen {
+    position: absolute;
+    inset: 0;
+  }
+
+  .mobile-ui .screen-message,
+  .mobile-ui .screen-message-open,
+  .mobile-ui .screen-game {
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.98);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+  }
+
+  .mobile-ui .screen-message { z-index: 50; }
+  .mobile-ui .screen-message-open { z-index: 60; }
+  .mobile-ui .screen-game { z-index: 70; }
+
+  .mobile-ui .screen-message.active,
+  .mobile-ui .screen-message-open.active,
+  .mobile-ui .screen-game.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+
+  .mobile-ui .screen-main.hidden {
+    opacity: 0;
+    pointer-events: none;
   }
 
   /* clickable hotspots */
@@ -747,4 +775,38 @@ body {
     width: 55%;
     height: 12%;
   }
+}
+
+/* GAME SCREEN (desktop) - hidden by default */
+.desktop-ui .screen-game {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.96);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 70;
+}
+
+/* shown when active */
+.desktop-ui .screen-game.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.screen-game .game-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.screen-game .game-ui {
+  position: relative;
+  z-index: 1;
 }

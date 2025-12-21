@@ -59,6 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const mainScreen = ui.querySelector(".screen-main");
     const notifScreen = ui.querySelector(".screen-message");
     const openScreen = ui.querySelector(".screen-message-open");
+    const gameScreen = ui.querySelector(".screen-game");
+
 
     const playButton = ui.querySelector(".play-button");
     const openTrigger = ui.querySelector(".open-trigger");
@@ -117,12 +119,31 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 2000);
       }
     }
+    function showGameScreen() {
+      document.body.classList.add("game-mode");
+
+      if (!gameScreen) return;
     
+      // hide other screens
+      mainScreen.classList.add("hidden");
+      notifScreen.classList.remove("active");
+      openScreen.classList.remove("active");
+    
+      // show game screen
+      gameScreen.classList.add("active");
+    }
 
     if (playButton) playButton.addEventListener("click", showNotif);
     if (openTrigger) openTrigger.addEventListener("click", showOpenMessage);
-    if (okayBtn) okayBtn.addEventListener("click", playClick);
-
+    if (gameScreen) gameScreen.classList.remove("active");
+    if (okayBtn) {
+      okayBtn.addEventListener("click", () => {
+        playClick();      // if you have click sfx
+        showGameScreen(); // go to screen 4
+      });
+    }
+    
+    
 
   }
 
