@@ -38,7 +38,8 @@ document.addEventListener("DOMContentLoaded", () => {
   playMusic();
 
   // Fallback: start music on first interaction anywhere
-  const unlockMusic = () => {
+  const unlockMusic = () =>
+  {
     playMusic();
     window.removeEventListener("pointerdown", unlockMusic);
     window.removeEventListener("keydown", unlockMusic);
@@ -82,7 +83,7 @@ document.addEventListener("DOMContentLoaded", () => {
           notifScreen.classList.contains("active") &&
           !openScreen.classList.contains("active");
         if (stillOnNotif) playNotif();
-      }, 0090);
+      }, 90);
 
       mainScreen.classList.add("hidden");
       notifScreen.classList.add("active");
