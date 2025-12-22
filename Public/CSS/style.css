@@ -862,19 +862,330 @@ body.game-mode {
   z-index: 5;
 }
 
-.screen-game .c1 {
+.desktop-ui .screen-game .c1 {
   position: absolute;
-  bottom: 1490px;
+  bottom: 1498px;
   left: 750px;
-  width: 805px;
+  width: 785px;
   z-index: 5;
+  cursor: pointer;
 }
 
-.screen-game .t1-1 {
+.desktop-ui .screen-game .c1:hover {
+  transform: scale(1.08);
+}
+
+.desktop-ui .screen-game .c1:active {
+  transform: scale(0.96);
+}
+
+.desktop-ui .screen-game .t1-1 {
   position: absolute;
-  bottom: 1590px;
-  left: 400px;
+  bottom: 1790px;
+  left: 520px;
   width: 205px;
   z-index: 5;
+  cursor: pointer;
+}
 
+.desktop-ui .screen-game .t1-1:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t1-1:active {
+  transform: scale(0.90);
+}
+
+.desktop-ui .screen-game .t1-2 {
+  position: absolute;
+  bottom: 1790px;
+  left: 1564px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t1-2:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t1-2:active {
+  transform: scale(0.90);
+}
+
+
+.screen-game .c2 {
+  position: absolute;
+  bottom: 750px;
+  left: 750px;
+  width: 785px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .c2:hover {
+  transform: scale(1.08);
+}
+
+.desktop-ui .screen-game .c2:active {
+  transform: scale(0.96);
+}
+
+.screen-game .t2-1 {
+  position: absolute;
+  bottom: 1030px;
+  left: 520px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t2-1:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t2-1:active {
+  transform: scale(0.90);
+}
+
+.screen-game .t2-2 {
+  position: absolute;
+  bottom: 1030px;
+  left: 1570px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t2-2:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t2-2:active {
+  transform: scale(0.90);
+}
+
+
+.screen-game .c3 {
+  position: absolute;
+  bottom: 8px;
+  left: 750px;
+  width: 785px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .c3:hover {
+  transform: scale(1.08);
+}
+
+.desktop-ui .screen-game .c3:active {
+  transform: scale(0.96);
+}
+
+.screen-game .t3-1 {
+  position: absolute;
+  bottom: 250px;
+  left: 520px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+.desktop-ui .screen-game .t3-1:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t3-1:active {
+  transform: scale(0.90);
+}
+
+.screen-game .t3-2 {
+  position: absolute;
+  bottom: 250px;
+  left: 1548px;
+  width: 205px;
+  z-index: 5;  
+  cursor: pointer;
+}
+.desktop-ui .screen-game .t3-2:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t3-2:active {
+  transform: scale(0.90);
+}
+
+.screen-game .c4 {
+  position: absolute;
+  bottom: 8px;
+  right: 750px;
+  width: 785px;
+  z-index: 5;
+  cursor: pointer;
+}
+.desktop-ui .screen-game .c4:hover {
+  transform: scale(1.08);
+}
+
+.desktop-ui .screen-game .c4:active {
+  transform: scale(0.96);
+}
+
+.screen-game .t4-2 {
+  position: absolute;
+  bottom: 250px;
+  right: 520px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t4-2:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t4-2:active {
+  transform: scale(0.90);
+}
+
+.screen-game .t4-1 {
+  position: absolute;
+  bottom: 250px;
+  right: 1548px;
+  width: 205px;
+  z-index: 5;  
+  cursor: pointer;
+}
+.desktop-ui .screen-game .t4-1:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t4-1:active {
+  transform: scale(0.90);
+}
+
+.screen-game .c5 {
+  position: absolute;
+  bottom: 750px;
+  right: 750px;
+  width: 785px;
+  z-index: 5;
+  cursor: pointer;
+}
+.desktop-ui .screen-game .c5:hover {
+  transform: scale(1.08);
+}
+
+.desktop-ui .screen-game .c5:active {
+  transform: scale(0.96);
+}
+
+.screen-game .t5-2 {
+  position: absolute;
+  bottom: 1030px;
+  right: 520px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+.desktop-ui .screen-game .t5-2:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t5-2:active {
+  transform: scale(0.90);
+}
+
+.screen-game .t5-1 {
+  position: absolute;
+  bottom: 1030px;
+  right: 1548px;
+  width: 205px;
+  z-index: 5;  
+  cursor: pointer;
+}
+.desktop-ui .screen-game .t5-1:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t5-1:active {
+  transform: scale(0.90);
+}
+
+.screen-game .c6 {
+  position: absolute;
+  bottom: 1539px;
+  right: 750px;
+  width: 785px;
+  z-index: 5;
+  cursor: pointer;
+}
+.desktop-ui .screen-game .c6:hover {
+  transform: scale(1.08);
+}
+
+.desktop-ui .screen-game .c6:active {
+  transform: scale(0.96);
+}
+
+.screen-game .t6-2 {
+  position: absolute;
+  bottom: 1790px;
+  right: 520px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+.desktop-ui .screen-game .t6-2:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t6-2:active {
+  transform: scale(0.90);
+}
+
+.screen-game .t6-1 {
+  position: absolute;
+  bottom: 1790px;
+  right: 1548px;
+  width: 205px;
+  z-index: 5;  
+  cursor: pointer;
+}
+.desktop-ui .screen-game .t6-1:hover {
+  transform: scale(1.18);
+}
+
+.desktop-ui .screen-game .t6-1:active {
+  transform: scale(0.90);
+}
+
+.reset {
+  color: #D22F25;
+  font-family: "Jersey 25";
+
+
+  position: absolute;
+  top: 8.5%;
+  right: 23%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-size: 125px;
+  z-index: 6;
+}
+
+.exit {
+  color: #7E79B2;
+  font-family: "Jersey 25";
+
+
+  position: absolute;
+  top: 8.5%;
+  right: 9%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-size: 125px;
+  z-index: 6;
 }
