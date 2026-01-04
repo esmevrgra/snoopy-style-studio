@@ -1,4 +1,4 @@
-/*background */
+/* background */
 html,
 body {
   margin: 0;
@@ -9,25 +9,46 @@ body {
   background: url("/assets/title/brick-background.png") no-repeat center center fixed;
   background-size: cover;
 }
+
 body.game-mode {
   background: url("/assets/gameing-screen/gaming-background.png") no-repeat center center fixed;
   background-size: cover;
 }
 
-
+/* =========================
+   ROOT WRAPPERS
+   ========================= */
 .app {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 
-.scene {
+/* viewport wrapper (prevents 5920px scene from affecting layout) */
+.stage {
   position: relative;
-  width: 5920px;
-  min-height: 2900px;
-  margin: 0 auto;
-  transform-origin: top center;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* =========================
+   FIXED DESKTOP CANVAS + SCALE-TO-FIT
+   Only apply on desktop widths
+   ========================= */
+@media (min-width: 769px) {
+  .scene {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: 5920px;
+    height: 2900px;
+
+    transform-origin: top center;
+
+    /* scale comes from JS; fallback to 1 */
+    transform: translateX(-50%) scale(var(--scale, 1));
+  }
 }
 
 /* =========================
@@ -36,13 +57,6 @@ body.game-mode {
 .desktop-ui { display: block; }
 .mobile-ui { display: none; }
 
-/* Desktop scaling (your design is 5920px wide) */
-@media (max-width: 5920px) {
-  .scene {
-    transform: scale(calc(100vw / 5920));
-  }
-}
-
 /* =========================
    MOBILE BREAKPOINT
    ========================= */
@@ -50,19 +64,24 @@ body.game-mode {
   .desktop-ui { display: none; }
   .mobile-ui { display: block; }
 
-  /* stop scaling + use normal layout */
+  /* On mobile, DO NOT keep a 5920px canvas.
+     Let mobile-stage own the viewport. */
   .scene {
-    width: 100%;
-    min-height: 100vh;
-    transform: none !important;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    transform: none;
   }
 
-  .app {
-    align-items: flex-start;
+  .stage {
+    overflow: hidden;
   }
 }
 
-/*SNOOPY title*/
+/* =========================
+   TITLE
+   ========================= */
 .title-text {
   position: relative;
   text-align: center;
@@ -159,7 +178,7 @@ body.game-mode {
   width: 450px;
 }
 
-/*snoopy*/
+/* snoopy */
 .snoopy {
   position: absolute;
   bottom: 0;
@@ -167,12 +186,10 @@ body.game-mode {
   width: 1700px;
 }
 
-/*play button*/
-/* =========================
-   PLAY BUTTON (FULL SETUP)
-   ========================= */
+/*
+   PLAY BUTTON (DESKTOP)*/
 
-/* wrapper — this is the hover target */
+/* wrapper — hover target */
 .desktop-ui .play-button {
   position: absolute;
   bottom: 150px;
@@ -235,7 +252,7 @@ body.game-mode {
   width: 306px;
 }
 
-/*star animation for play button*/
+/* star animation for play button */
 @keyframes spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -253,7 +270,7 @@ body.game-mode {
   transform: scale(1.05);
 }
 
-/*gift animation*/
+/* gift animation */
 @keyframes shimmy {
   0%   { transform: rotate(0deg); }
   25%  { transform: rotate(-12deg); }
@@ -270,7 +287,7 @@ body.game-mode {
   animation: shimmy 2s ease-in-out infinite;
 }
 
-/*gift tag*/
+/* gift tag */
 .purple-tag {
   position: absolute;
   top: 840px;
@@ -350,8 +367,9 @@ body.game-mode {
     5px 5px 0 rgba(183, 178, 227, 0.45);
 }
 
-/*screen for the notif message*/
-/* screens stack on top of each other */
+/* =========================
+   SCREEN STACKING (DESKTOP)
+   ========================= */
 .desktop-ui .screen {
   position: absolute;
   inset: 0;
@@ -412,7 +430,6 @@ body.game-mode {
 }
 
 /* --- BUTTON --- */
-/* The container for the button and text */
 .open-trigger {
   position: absolute;
   top: 50%;
@@ -423,7 +440,6 @@ body.game-mode {
   cursor: pointer;
 }
 
-/* Individual elements inside the trigger */
 .o-button, .message-sub {
   transition: transform 0.3s ease;
   pointer-events: none;
@@ -451,19 +467,15 @@ body.game-mode {
   white-space: nowrap;
 }
 
-/*button animation*/
 .open-trigger:hover .o-button {
   transform: scale(1.1);
 }
-
 .open-trigger:hover .message-sub {
   transform: translateX(-50%) scale(1.1);
 }
-
 .open-trigger:active .o-button {
   transform: scale(0.95);
 }
-
 .open-trigger:active .message-sub {
   transform: translateX(-50%) scale(0.95);
 }
@@ -499,7 +511,7 @@ body.game-mode {
   animation: bell-ring-rest 3s ease-in-out infinite;
 }
 
-/*flower animation*/
+/* flower animation */
 @keyframes flower-twirl {
   0%   { transform: rotate(0deg) scale(1); }
   50%  { transform: rotate(180deg) scale(1.05); }
@@ -508,10 +520,11 @@ body.game-mode {
 
 .desktop-ui .screen-message:hover .flower {
   transform-origin: center;
+  tell: none;
   animation: flower-twirl 6s ease-in-out infinite;
 }
 
-/* TEXT (starter placement — you can tweak top/left) */
+/* TEXT */
 .message-title {
   position: absolute;
   top: 40%;
@@ -671,6 +684,8 @@ body.game-mode {
   animation: star-spin-pulse 5s ease-in-out infinite;
 }
 
+
+
 /* =========================
    MOBILE UI
    ========================= */
@@ -777,7 +792,9 @@ body.game-mode {
   }
 }
 
-/* GAME SCREEN (desktop) - hidden by default */
+/* =========================
+   GAME SCREEN (DESKTOP)
+   ========================= */
 .desktop-ui .screen-game {
   position: absolute;
   inset: 0;
@@ -790,7 +807,6 @@ body.game-mode {
   z-index: 70;
 }
 
-/* shown when active */
 .desktop-ui .screen-game.active {
   opacity: 1;
   pointer-events: auto;
@@ -802,13 +818,8 @@ body.game-mode {
   inset: 0;
   width: 100vw;
   height: 100vh;
-  overflow-x: hidden;
+  object-fit: cover;
   z-index: 0;
-}
-
-.screen-game .game-ui {
-  position: relative;
-  z-index: 1;
 }
 
 .screen-game .game-ui {
@@ -833,17 +844,26 @@ body.game-mode {
   width: 700px;
   cursor: pointer;
   z-index: 5;
-
 }
 
 .screen-game .reset-btn {
+  position: absolute;
+  top: 120px;
+  right: 1300px;
+  width: 700px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+
+/*exit button*/
+.screen-game .exit-btn {
   position: absolute;
   top: 120px;
   right: 380px;
   width: 700px;
   cursor: pointer;
   z-index: 5;
-
 }
 
 .screen-game .stand {
@@ -871,13 +891,8 @@ body.game-mode {
   cursor: pointer;
 }
 
-.desktop-ui .screen-game .c1:hover {
-  transform: scale(1.08);
-}
-
-.desktop-ui .screen-game .c1:active {
-  transform: scale(0.96);
-}
+.desktop-ui .screen-game .c1:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c1:active { transform: scale(0.96); }
 
 .desktop-ui .screen-game .t1-1 {
   position: absolute;
@@ -888,13 +903,8 @@ body.game-mode {
   cursor: pointer;
 }
 
-.desktop-ui .screen-game .t1-1:hover {
-  transform: scale(1.18);
-}
-
-.desktop-ui .screen-game .t1-1:active {
-  transform: scale(0.90);
-}
+.desktop-ui .screen-game .t1-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t1-1:active { transform: scale(0.90); }
 
 .desktop-ui .screen-game .t1-2 {
   position: absolute;
@@ -905,14 +915,8 @@ body.game-mode {
   cursor: pointer;
 }
 
-.desktop-ui .screen-game .t1-2:hover {
-  transform: scale(1.18);
-}
-
-.desktop-ui .screen-game .t1-2:active {
-  transform: scale(0.90);
-}
-
+.desktop-ui .screen-game .t1-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t1-2:active { transform: scale(0.90); }
 
 .screen-game .c2 {
   position: absolute;
@@ -923,13 +927,8 @@ body.game-mode {
   cursor: pointer;
 }
 
-.desktop-ui .screen-game .c2:hover {
-  transform: scale(1.08);
-}
-
-.desktop-ui .screen-game .c2:active {
-  transform: scale(0.96);
-}
+.desktop-ui .screen-game .c2:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c2:active { transform: scale(0.96); }
 
 .screen-game .t2-1 {
   position: absolute;
@@ -940,13 +939,8 @@ body.game-mode {
   cursor: pointer;
 }
 
-.desktop-ui .screen-game .t2-1:hover {
-  transform: scale(1.18);
-}
-
-.desktop-ui .screen-game .t2-1:active {
-  transform: scale(0.90);
-}
+.desktop-ui .screen-game .t2-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t2-1:active { transform: scale(0.90); }
 
 .screen-game .t2-2 {
   position: absolute;
@@ -957,14 +951,8 @@ body.game-mode {
   cursor: pointer;
 }
 
-.desktop-ui .screen-game .t2-2:hover {
-  transform: scale(1.18);
-}
-
-.desktop-ui .screen-game .t2-2:active {
-  transform: scale(0.90);
-}
-
+.desktop-ui .screen-game .t2-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t2-2:active { transform: scale(0.90); }
 
 .screen-game .c3 {
   position: absolute;
@@ -975,13 +963,8 @@ body.game-mode {
   cursor: pointer;
 }
 
-.desktop-ui .screen-game .c3:hover {
-  transform: scale(1.08);
-}
-
-.desktop-ui .screen-game .c3:active {
-  transform: scale(0.96);
-}
+.desktop-ui .screen-game .c3:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c3:active { transform: scale(0.96); }
 
 .screen-game .t3-1 {
   position: absolute;
@@ -991,29 +974,21 @@ body.game-mode {
   z-index: 5;
   cursor: pointer;
 }
-.desktop-ui .screen-game .t3-1:hover {
-  transform: scale(1.18);
-}
 
-.desktop-ui .screen-game .t3-1:active {
-  transform: scale(0.90);
-}
+.desktop-ui .screen-game .t3-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t3-1:active { transform: scale(0.90); }
 
 .screen-game .t3-2 {
   position: absolute;
   bottom: 250px;
   left: 1548px;
   width: 205px;
-  z-index: 5;  
+  z-index: 5;
   cursor: pointer;
 }
-.desktop-ui .screen-game .t3-2:hover {
-  transform: scale(1.18);
-}
 
-.desktop-ui .screen-game .t3-2:active {
-  transform: scale(0.90);
-}
+.desktop-ui .screen-game .t3-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t3-2:active { transform: scale(0.90); }
 
 .screen-game .c4 {
   position: absolute;
@@ -1023,13 +998,9 @@ body.game-mode {
   z-index: 5;
   cursor: pointer;
 }
-.desktop-ui .screen-game .c4:hover {
-  transform: scale(1.08);
-}
 
-.desktop-ui .screen-game .c4:active {
-  transform: scale(0.96);
-}
+.desktop-ui .screen-game .c4:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c4:active { transform: scale(0.96); }
 
 .screen-game .t4-2 {
   position: absolute;
@@ -1040,29 +1011,20 @@ body.game-mode {
   cursor: pointer;
 }
 
-.desktop-ui .screen-game .t4-2:hover {
-  transform: scale(1.18);
-}
-
-.desktop-ui .screen-game .t4-2:active {
-  transform: scale(0.90);
-}
+.desktop-ui .screen-game .t4-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t4-2:active { transform: scale(0.90); }
 
 .screen-game .t4-1 {
   position: absolute;
   bottom: 250px;
   right: 1548px;
   width: 205px;
-  z-index: 5;  
+  z-index: 5;
   cursor: pointer;
 }
-.desktop-ui .screen-game .t4-1:hover {
-  transform: scale(1.18);
-}
 
-.desktop-ui .screen-game .t4-1:active {
-  transform: scale(0.90);
-}
+.desktop-ui .screen-game .t4-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t4-1:active { transform: scale(0.90); }
 
 .screen-game .c5 {
   position: absolute;
@@ -1072,13 +1034,9 @@ body.game-mode {
   z-index: 5;
   cursor: pointer;
 }
-.desktop-ui .screen-game .c5:hover {
-  transform: scale(1.08);
-}
 
-.desktop-ui .screen-game .c5:active {
-  transform: scale(0.96);
-}
+.desktop-ui .screen-game .c5:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c5:active { transform: scale(0.96); }
 
 .screen-game .t5-2 {
   position: absolute;
@@ -1088,29 +1046,21 @@ body.game-mode {
   z-index: 5;
   cursor: pointer;
 }
-.desktop-ui .screen-game .t5-2:hover {
-  transform: scale(1.18);
-}
 
-.desktop-ui .screen-game .t5-2:active {
-  transform: scale(0.90);
-}
+.desktop-ui .screen-game .t5-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t5-2:active { transform: scale(0.90); }
 
 .screen-game .t5-1 {
   position: absolute;
   bottom: 1030px;
   right: 1548px;
   width: 205px;
-  z-index: 5;  
+  z-index: 5;
   cursor: pointer;
 }
-.desktop-ui .screen-game .t5-1:hover {
-  transform: scale(1.18);
-}
 
-.desktop-ui .screen-game .t5-1:active {
-  transform: scale(0.90);
-}
+.desktop-ui .screen-game .t5-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t5-1:active { transform: scale(0.90); }
 
 .screen-game .c6 {
   position: absolute;
@@ -1120,13 +1070,9 @@ body.game-mode {
   z-index: 5;
   cursor: pointer;
 }
-.desktop-ui .screen-game .c6:hover {
-  transform: scale(1.08);
-}
 
-.desktop-ui .screen-game .c6:active {
-  transform: scale(0.96);
-}
+.desktop-ui .screen-game .c6:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c6:active { transform: scale(0.96); }
 
 .screen-game .t6-2 {
   position: absolute;
@@ -1136,56 +1082,85 @@ body.game-mode {
   z-index: 5;
   cursor: pointer;
 }
-.desktop-ui .screen-game .t6-2:hover {
-  transform: scale(1.18);
-}
 
-.desktop-ui .screen-game .t6-2:active {
-  transform: scale(0.90);
-}
+.desktop-ui .screen-game .t6-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t6-2:active { transform: scale(0.90); }
 
 .screen-game .t6-1 {
   position: absolute;
   bottom: 1790px;
   right: 1548px;
   width: 205px;
-  z-index: 5;  
+  z-index: 5;
   cursor: pointer;
 }
-.desktop-ui .screen-game .t6-1:hover {
-  transform: scale(1.18);
-}
 
-.desktop-ui .screen-game .t6-1:active {
-  transform: scale(0.90);
-}
+.desktop-ui .screen-game .t6-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t6-1:active { transform: scale(0.90); }
 
 .reset {
   color: #D22F25;
   font-family: "Jersey 25";
-
-
   position: absolute;
   top: 8.5%;
   right: 23%;
   transform: translateX(-50%);
   margin: 0;
-
   font-size: 125px;
   z-index: 6;
+  cursor: pointer;
+}
+
+/* make hover smooth */
+.screen-game .reset-btn {
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+
+/* grow on hover */
+@media (hover: hover) and (pointer: fine) {
+  .screen-game .reset-btn:hover
+  {
+    transform: scale(1.08);
+  }
+
+  /* optional: slight “press” feel */
+  .screen-game .exit-btn:active,
+  .screen-game .exit:active {
+    transform: scale(0.96);
+  }
 }
 
 .exit {
   color: #7E79B2;
   font-family: "Jersey 25";
-
-
   position: absolute;
   top: 8.5%;
-  right: 9%;
-  transform: translateX(-50%);
+  right: 10.5%;
   margin: 0;
-
   font-size: 125px;
   z-index: 6;
+  cursor: pointer;
 }
+
+/* make hover smooth */
+.screen-game .exit-btn,
+.screen-game .exit {
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+
+/* grow on hover */
+@media (hover: hover) and (pointer: fine) {
+  .screen-game .exit-btn:hover,
+  .screen-game .exit:hover {
+    transform: scale(1.08);
+  }
+
+  /* optional: slight “press” feel */
+  .screen-game .exit-btn:active,
+  .screen-game .exit:active {
+    transform: scale(0.96);
+  }
+}
+
