@@ -1164,3 +1164,58 @@ body.game-mode {
   }
 }
 
+
+/* clothes */
+.desktop-ui .screen-game .santa-hat {
+  position: absolute;
+  bottom: 1670px;
+  left: 830px;
+  width: 605px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .red-sweat {
+  position: absolute;
+  bottom: 900px;
+  left: 820px;
+  width: 650px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .red-jack {
+  position: absolute;
+  bottom: 100px;
+  left: 870px;
+  width: 540px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .goggles {
+  position: absolute;
+  bottom: 1758px;
+  right: 842px;
+  width: 585px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .red-hand {
+  position: absolute;
+  bottom: 931px;
+  right: 840px;
+  width: 585px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .gingerbread {
+  position: absolute;
+  bottom: 83px;
+  right: 814px;
+  width: 660px;
+  z-index: 5;
+  cursor: pointer;
+}
