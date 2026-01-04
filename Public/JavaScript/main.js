@@ -198,94 +198,105 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // ---------- Asset carousels (6 circles, 3 items each) ----------
   function setupCarousels() {
-    const slots = [
-      {
-        // Circle 1 (hat)
-        itemEl: ui.querySelector(".santa-hat"),
-        prevEl: ui.querySelector(".t1-1"),
-        nextEl: ui.querySelector(".t1-2"),
-        items: [
-          "/assets/clothes/santa-hat.png",
-          "/assets/clothes/my-melo.png",
-          "/assets/clothes/snorlax.png",
-        ],
-      },
-      {
-        // Circle 2 (sweater/top)
-        itemEl: ui.querySelector(".red-sweat"),
-        prevEl: ui.querySelector(".t2-1"),
-        nextEl: ui.querySelector(".t2-2"),
-        items: [
-          "/assets/clothes/red-sweat.png",
-          "/assets/clothes/pink-sweat.png",
-          "/assets/clothes/purple-sweat.png",
-        ],
-      },
-      {
-        // Circle 3 (jacket)
-        itemEl: ui.querySelector(".red-jack"),
-        prevEl: ui.querySelector(".t3-1"),
-        nextEl: ui.querySelector(".t3-2"),
-        items: [
-          "/assets/clothes/red-jack.png",
-          "/assets/clothes/black-jack.png",
-          "/assets/clothes/purple-jack.png",
-        ],
-      },
-      {
-        // Circle 4 (glasses)
-        itemEl: ui.querySelector(".goggles"),
-        prevEl: ui.querySelector(".t4-1"),
-        nextEl: ui.querySelector(".t4-2"),
-        items: [
-          "/assets/clothes/goggles.png",
-          "/assets/clothes/pink-ear.png",
-          "/assets/clothes/teddy.png",
-        ],
-      },
-      {
-        // Circle 5 (mittens)
-        itemEl: ui.querySelector(".red-hand"),
-        prevEl: ui.querySelector(".t5-1"),
-        nextEl: ui.querySelector(".t5-2"),
-        items: [
-          "/assets/clothes/red-hand.png",
-          "/assets/clothes/glasses.png",
-          "/assets/clothes/purple-hand.png",
-        ],
-      },
-      {
-        // Circle 6 (plush)
-        itemEl: ui.querySelector(".gingerbread"),
-        prevEl: ui.querySelector(".t6-1"),
-        nextEl: ui.querySelector(".t6-2"),
-        items: [
-          "/assets/clothes/gingerbread-plush.png",
-          "/assets/clothes/black-beanie.png",
-          "/assets/clothes/purple-snowboard.png",
-        ],
-      },
-    ];
+  const slots = [
+    {
+      // Circle 1 (hat)
+      itemEl: ui.querySelector(".santa-hat"),
+      prevEl: ui.querySelector(".t1-1"),
+      nextEl: ui.querySelector(".t1-2"),
+      items: [
+        "/assets/clothes/santa-hat.png",
+        "/assets/clothes/my-melo.png",
+        "/assets/clothes/snorlax.png",
+      ],
+      names: ["santa-hat", "my-melo", "snorlax"],
+    },
+    {
+      // Circle 2 (sweater/top)
+      itemEl: ui.querySelector(".red-sweat"),
+      prevEl: ui.querySelector(".t2-1"),
+      nextEl: ui.querySelector(".t2-2"),
+      items: [
+        "/assets/clothes/red-sweat.png",
+        "/assets/clothes/pink-sweat.png",
+        "/assets/clothes/purple-sweat.png",
+      ],
+      names: ["red-sweat", "pink-sweat", "purple-sweat"],
+    },
+    {
+      // Circle 3 (jacket)
+      itemEl: ui.querySelector(".red-jack"),
+      prevEl: ui.querySelector(".t3-1"),
+      nextEl: ui.querySelector(".t3-2"),
+      items: [
+        "/assets/clothes/red-jack.png",
+        "/assets/clothes/black-jack.png",
+        "/assets/clothes/purple-jack.png",
+      ],
+      names: ["red-jack", "black-jack", "purple-jack"],
+    },
+    {
+      // Circle 4 (glasses)
+      itemEl: ui.querySelector(".goggles"),
+      prevEl: ui.querySelector(".t4-1"),
+      nextEl: ui.querySelector(".t4-2"),
+      items: [
+        "/assets/clothes/goggles.png",
+        "/assets/clothes/pink-ear.png",
+        "/assets/clothes/teddy.png",
+      ],
+      names: ["goggles", "pink-ear", "teddy"],
+    },
+    {
+      // Circle 5 (mittens)
+      itemEl: ui.querySelector(".red-hand"),
+      prevEl: ui.querySelector(".t5-1"),
+      nextEl: ui.querySelector(".t5-2"),
+      items: [
+        "/assets/clothes/red-hand.png",
+        "/assets/clothes/glasses.png",
+        "/assets/clothes/purple-hand.png",
+      ],
+      names: ["red-hand", "glasses", "purple-hand"],
+    },
+    {
+      // Circle 6 (plush)
+      itemEl: ui.querySelector(".gingerbread"),
+      prevEl: ui.querySelector(".t6-1"),
+      nextEl: ui.querySelector(".t6-2"),
+      items: [
+        "/assets/clothes/gingerbread-plush.png",
+        "/assets/clothes/black-beanie.png",
+        "/assets/clothes/purple-snowboard.png",
+      ],
+      names: ["gingerbread-plush", "black-beanie", "purple-snowboard"],
+    },
+  ];
 
-    slots.forEach((slot) => {
-      if (!slot.itemEl || !slot.prevEl || !slot.nextEl) return;
-
-      let i = 0;
-      slot.itemEl.src = slot.items[i];
-
-      slot.prevEl.addEventListener("click", () => {
-        playClick();
-        i = (i - 1 + slot.items.length) % slot.items.length;
-        slot.itemEl.src = slot.items[i];
-      });
-
-      slot.nextEl.addEventListener("click", () => {
-        playClick();
-        i = (i + 1) % slot.items.length;
-        slot.itemEl.src = slot.items[i];
-      });
-    });
+  function applySlot(slot, index) {
+    slot.itemEl.src = slot.items[index];
+    slot.itemEl.dataset.item = slot.names[index]; // <-- this is the key
   }
+
+  slots.forEach((slot) => {
+    if (!slot.itemEl || !slot.prevEl || !slot.nextEl) return;
+
+    let i = 0;
+    applySlot(slot, i);
+
+    slot.prevEl.addEventListener("click", () => {
+      playClick();
+      i = (i - 1 + slot.items.length) % slot.items.length;
+      applySlot(slot, i);
+    });
+
+    slot.nextEl.addEventListener("click", () => {
+      playClick();
+      i = (i + 1) % slot.items.length;
+      applySlot(slot, i);
+    });
+  });
+}
 
   setupCarousels();
 

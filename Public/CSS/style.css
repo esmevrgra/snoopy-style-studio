@@ -1182,52 +1182,89 @@ body.game-mode {
   position: absolute;
   bottom: 1670px;
   left: 830px;
-  width: 605px;
+
+  width: var(--w, 605px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
   z-index: 5;
-  cursor: pointer;
+  pointer-events: none; /* keep arrows clickable */
 }
+
+.desktop-ui .screen-game .santa-hat[data-item="my-melo"] {
+  --x: 130px;     /* right/left */
+  --y: 40px;    /* down/up (positive = down) */
+  --w: 375px;   /* size */
+}
+
+.desktop-ui .screen-game .santa-hat[data-item="snorlax"] {
+  --x: 38px;
+  --y: 30px;
+  --w: 587px;
+}
+
+
 
 .desktop-ui .screen-game .red-sweat {
   position: absolute;
   bottom: 900px;
   left: 820px;
-  width: 650px;
+
+  width: var(--w, 650px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
   z-index: 5;
-  cursor: pointer;
+  pointer-events: none;
+  height: auto;
 }
 
 .desktop-ui .screen-game .red-jack {
   position: absolute;
   bottom: 100px;
   left: 870px;
-  width: 540px;
+
+  width: var(--w, 540px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
   z-index: 5;
-  cursor: pointer;
+  pointer-events: none;
+  height: auto;
 }
 
 .desktop-ui .screen-game .goggles {
   position: absolute;
   bottom: 1758px;
   right: 842px;
-  width: 585px;
+
+  width: var(--w, 585px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
   z-index: 5;
-  cursor: pointer;
+  pointer-events: none;
+  height: auto;
 }
 
 .desktop-ui .screen-game .red-hand {
   position: absolute;
   bottom: 931px;
   right: 840px;
-  width: 585px;
+
+  width: var(--w, 585px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
   z-index: 5;
-  cursor: pointer;
+  pointer-events: none;
+  height: auto;
 }
 
 .desktop-ui .screen-game .gingerbread {
   position: absolute;
   bottom: 83px;
   right: 814px;
-  width: 660px;
+
+  width: var(--w, 660px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
   z-index: 5;
-  cursor: pointer;
+  pointer-events: none;
+  height: auto;
 }
