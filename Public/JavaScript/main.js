@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
     gameScreen.classList.add("active");
   }
 
-  // ✅ GO BACK TO FIRST PAGE (main screen)
+  //GO BACK to main screen
   function goHome() {
     document.body.classList.remove("game-mode");
 
@@ -183,7 +183,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ✅ exit button: image + text
   if (exitBtnImg) exitBtnImg.addEventListener("click", () => {
     playClick();
     goHome();
@@ -195,7 +194,102 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // optional: ensure game starts hidden
-  if (gameScreen) gameScreen.classList.remove("active");
+    if (gameScreen) gameScreen.classList.remove("active");
+
+    // ---------- Asset carousels (6 circles, 3 items each) ----------
+  function setupCarousels() {
+    const slots = [
+      {
+        // Circle 1 (hat)
+        itemEl: ui.querySelector(".santa-hat"),
+        prevEl: ui.querySelector(".t1-1"),
+        nextEl: ui.querySelector(".t1-2"),
+        items: [
+          "/assets/clothes/santa-hat.png",
+          "/assets/clothes/earmuffs.png",
+          "/assets/clothes/beanie.png",
+        ],
+      },
+      {
+        // Circle 2 (sweater/top)
+        itemEl: ui.querySelector(".red-sweat"),
+        prevEl: ui.querySelector(".t2-1"),
+        nextEl: ui.querySelector(".t2-2"),
+        items: [
+          "/assets/clothes/red-sweat.png",
+          "/assets/clothes/green-sweat.png",
+          "/assets/clothes/blue-sweat.png",
+        ],
+      },
+      {
+        // Circle 3 (jacket)
+        itemEl: ui.querySelector(".red-jack"),
+        prevEl: ui.querySelector(".t3-1"),
+        nextEl: ui.querySelector(".t3-2"),
+        items: [
+          "/assets/clothes/red-jack.png",
+          "/assets/clothes/puffer.png",
+          "/assets/clothes/coat.png",
+        ],
+      },
+      {
+        // Circle 4 (glasses)
+        itemEl: ui.querySelector(".goggles"),
+        prevEl: ui.querySelector(".t4-1"),
+        nextEl: ui.querySelector(".t4-2"),
+        items: [
+          "/assets/clothes/goggles.png",
+          "/assets/clothes/sunglasses.png",
+          "/assets/clothes/round-glasses.png",
+        ],
+      },
+      {
+        // Circle 5 (mittens)
+        itemEl: ui.querySelector(".red-hand"),
+        prevEl: ui.querySelector(".t5-1"),
+        nextEl: ui.querySelector(".t5-2"),
+        items: [
+          "/assets/clothes/red-hand.png",
+          "/assets/clothes/green-mittens.png",
+          "/assets/clothes/blue-mittens.png",
+        ],
+      },
+      {
+        // Circle 6 (plush)
+        itemEl: ui.querySelector(".gingerbread"),
+        prevEl: ui.querySelector(".t6-1"),
+        nextEl: ui.querySelector(".t6-2"),
+        items: [
+          "/assets/clothes/gingerbread-plush.png",
+          "/assets/clothes/snowman-plush.png",
+          "/assets/clothes/reindeer-plush.png",
+        ],
+      },
+    ];
+
+    slots.forEach((slot) => {
+      if (!slot.itemEl || !slot.prevEl || !slot.nextEl) return;
+
+      let i = 0;
+      slot.itemEl.src = slot.items[i];
+
+      slot.prevEl.addEventListener("click", () => {
+        playClick();
+        i = (i - 1 + slot.items.length) % slot.items.length;
+        slot.itemEl.src = slot.items[i];
+      });
+
+      slot.nextEl.addEventListener("click", () => {
+        playClick();
+        i = (i + 1) % slot.items.length;
+        slot.itemEl.src = slot.items[i];
+      });
+    });
+  }
+
+  setupCarousels();
+
+
 }
 
 

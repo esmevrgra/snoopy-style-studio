@@ -1166,6 +1166,13 @@ body.game-mode {
 
 
 /* clothes */
+
+/* Prevent the preview item images from blocking arrow clicks */
+.desktop-ui .screen-game .slot-item {
+  pointer-events: none;
+  cursor: default;
+}
+
 .desktop-ui .screen-game .santa-hat {
   position: absolute;
   bottom: 1670px;
