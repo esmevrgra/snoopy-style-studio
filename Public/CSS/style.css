@@ -1217,6 +1217,20 @@ body.game-mode {
   height: auto;
 }
 
+.desktop-ui .screen-game .red-sweat[data-item="pink-sweat"] {
+  --x: -10px; /* right and left */
+  --y: -10px; /* positive-- up negative-- down */
+  --w: 645px; /* size */
+}
+
+.desktop-ui .screen-game .red-sweat[data-item="purple-sweat"] {
+  --x: 0px;
+  --y: 0px;
+  --w: 650px;
+}
+
+
+
 .desktop-ui .screen-game .red-jack {
   position: absolute;
   bottom: 100px;
@@ -1229,6 +1243,20 @@ body.game-mode {
   pointer-events: none;
   height: auto;
 }
+
+.desktop-ui .screen-game .red-jack[data-item="black-jack"] {
+  --x: -10px;
+  --y: 0px;
+  --w: 540px;
+}
+
+.desktop-ui .screen-game .red-jack[data-item="purple-jack"] {
+  --x: -20px;
+  --y: 0px;
+  --w: 525px;
+}
+
+
 
 .desktop-ui .screen-game .goggles {
   position: absolute;
@@ -1243,6 +1271,21 @@ body.game-mode {
   height: auto;
 }
 
+.desktop-ui .screen-game .goggles[data-item="pink-ear"] {
+  --x: 0px;
+  --y: 80px;
+  --w: 550px;
+}
+
+.desktop-ui .screen-game .goggles[data-item="teddy"] {
+  --x: -84px;
+  --y: 98px;
+  --w: 405px;
+}
+
+
+
+
 .desktop-ui .screen-game .red-hand {
   position: absolute;
   bottom: 931px;
@@ -1256,6 +1299,21 @@ body.game-mode {
   height: auto;
 }
 
+.desktop-ui .screen-game .red-hand[data-item="glasses"] {
+  --x: 8px;
+  --y: -88px;
+  --w: 585px;
+}
+
+.desktop-ui .screen-game .red-hand[data-item="purple-hand"] {
+  --x: 0px;
+  --y: 0px;
+  --w: 585px;
+}
+
+
+
+
 .desktop-ui .screen-game .gingerbread {
   position: absolute;
   bottom: 83px;
@@ -1267,4 +1325,16 @@ body.game-mode {
   z-index: 5;
   pointer-events: none;
   height: auto;
+}
+
+.desktop-ui .screen-game .gingerbread[data-item="black-beanie"] {
+  --x: -69px;
+  --y: -63px;
+  --w: 505px;
+}
+
+.desktop-ui .screen-game .gingerbread[data-item="purple-snowboard"] {
+  --x: -30px;
+  --y: 36px;
+  --w: 560px;
 }
