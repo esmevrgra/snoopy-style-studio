@@ -206,8 +206,8 @@ document.addEventListener("DOMContentLoaded", () => {
         nextEl: ui.querySelector(".t1-2"),
         items: [
           "/assets/clothes/santa-hat.png",
-          "/assets/clothes/earmuffs.png",
-          "/assets/clothes/beanie.png",
+          "/assets/clothes/my-melo.png",
+          "/assets/clothes/snorlax.png",
         ],
       },
       {
@@ -217,8 +217,8 @@ document.addEventListener("DOMContentLoaded", () => {
         nextEl: ui.querySelector(".t2-2"),
         items: [
           "/assets/clothes/red-sweat.png",
-          "/assets/clothes/green-sweat.png",
-          "/assets/clothes/blue-sweat.png",
+          "/assets/clothes/pink-sweat.png",
+          "/assets/clothes/purple-sweat.png",
         ],
       },
       {
@@ -228,8 +228,8 @@ document.addEventListener("DOMContentLoaded", () => {
         nextEl: ui.querySelector(".t3-2"),
         items: [
           "/assets/clothes/red-jack.png",
-          "/assets/clothes/puffer.png",
-          "/assets/clothes/coat.png",
+          "/assets/clothes/black-jack.png",
+          "/assets/clothes/purple-jack.png",
         ],
       },
       {
@@ -239,8 +239,8 @@ document.addEventListener("DOMContentLoaded", () => {
         nextEl: ui.querySelector(".t4-2"),
         items: [
           "/assets/clothes/goggles.png",
-          "/assets/clothes/sunglasses.png",
-          "/assets/clothes/round-glasses.png",
+          "/assets/clothes/pink-ear.png",
+          "/assets/clothes/teddy.png",
         ],
       },
       {
@@ -250,8 +250,8 @@ document.addEventListener("DOMContentLoaded", () => {
         nextEl: ui.querySelector(".t5-2"),
         items: [
           "/assets/clothes/red-hand.png",
-          "/assets/clothes/green-mittens.png",
-          "/assets/clothes/blue-mittens.png",
+          "/assets/clothes/glasses.png",
+          "/assets/clothes/purple-hand.png",
         ],
       },
       {
@@ -261,8 +261,8 @@ document.addEventListener("DOMContentLoaded", () => {
         nextEl: ui.querySelector(".t6-2"),
         items: [
           "/assets/clothes/gingerbread-plush.png",
-          "/assets/clothes/snowman-plush.png",
-          "/assets/clothes/reindeer-plush.png",
+          "/assets/clothes/black-beanie.png",
+          "/assets/clothes/purple-snowboard.png",
         ],
       },
     ];

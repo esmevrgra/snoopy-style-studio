@@ -1002,7 +1002,7 @@ body.game-mode {
 .desktop-ui .screen-game .c4:hover { transform: scale(1.08); }
 .desktop-ui .screen-game .c4:active { transform: scale(0.96); }
 
-.screen-game .t4-2 {
+.screen-game .t6-2 {
   position: absolute;
   bottom: 250px;
   right: 520px;
@@ -1014,7 +1014,7 @@ body.game-mode {
 .desktop-ui .screen-game .t4-2:hover { transform: scale(1.18); }
 .desktop-ui .screen-game .t4-2:active { transform: scale(0.90); }
 
-.screen-game .t4-1 {
+.screen-game .t6-1 {
   position: absolute;
   bottom: 250px;
   right: 1548px;
@@ -1074,7 +1074,7 @@ body.game-mode {
 .desktop-ui .screen-game .c6:hover { transform: scale(1.08); }
 .desktop-ui .screen-game .c6:active { transform: scale(0.96); }
 
-.screen-game .t6-2 {
+.screen-game .t4-2 {
   position: absolute;
   bottom: 1790px;
   right: 520px;
@@ -1086,7 +1086,7 @@ body.game-mode {
 .desktop-ui .screen-game .t6-2:hover { transform: scale(1.18); }
 .desktop-ui .screen-game .t6-2:active { transform: scale(0.90); }
 
-.screen-game .t6-1 {
+.screen-game .t4-1 {
   position: absolute;
   bottom: 1790px;
   right: 1548px;
@@ -1167,11 +1167,16 @@ body.game-mode {
 
 /* clothes */
 
-/* Prevent the preview item images from blocking arrow clicks */
+/* Make sure swapped images don't block arrow clicks */
 .desktop-ui .screen-game .slot-item {
   pointer-events: none;
-  cursor: default;
 }
+
+/* Optional: avoid weird stretching and keep aspect ratio */
+.desktop-ui .screen-game .slot-item {
+  height: auto;
+}
+
 
 .desktop-ui .screen-game .santa-hat {
   position: absolute;
