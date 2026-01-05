@@ -1164,6 +1164,63 @@ body.game-mode {
   }
 }
 
+/* stack position */
+/* Snoopy + wearable layers stack */
+.screen-game .snoopy-stack {
+  position: absolute;
+  bottom: 190px;     /* same as your old .snoop */
+  right: 2100px;     /* same as your old .snoop */
+  width: 1285px;     /* same as your old .snoop */
+  z-index: 6;        /* above stand */
+}
+
+.screen-game .snoopy-stack img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+
+/* wear layers start hidden until chosen */
+.screen-game .wear {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.screen-game .wear.show {
+  opacity: 1;
+}
+
+
+/* clothes layering */
+/* --- SNOOPY WEARING LAYERS --- */
+.desktop-ui .screen-game .wear-1,
+.desktop-ui .screen-game .wear-2,
+.desktop-ui .screen-game .wear-3,
+.desktop-ui .screen-game .wear-4,
+.desktop-ui .screen-game .wear-5,
+.desktop-ui .screen-game .wear-6 {
+  position: absolute;
+  z-index: 10;            /* above snoopy */
+  pointer-events: none;   /* never block clicking */
+  opacity: 0;             /* hidden until chosen */
+  transform-origin: center;
+}
+
+/* main.js adds .show when chosen */
+.desktop-ui .screen-game .wear-1.show,
+.desktop-ui .screen-game .wear-2.show,
+.desktop-ui .screen-game .wear-3.show,
+.desktop-ui .screen-game .wear-4.show,
+.desktop-ui .screen-game .wear-5.show,
+.desktop-ui .screen-game .wear-6.show {
+  opacity: 1;
+}
+
+
+
 
 /* clothes */
 
