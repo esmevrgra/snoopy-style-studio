@@ -990,7 +990,7 @@ body.game-mode {
 .desktop-ui .screen-game .t3-2:hover { transform: scale(1.18); }
 .desktop-ui .screen-game .t3-2:active { transform: scale(0.90); }
 
-.screen-game .c4 {
+.screen-game .c6 {
   position: absolute;
   bottom: 8px;
   right: 750px;
@@ -1062,7 +1062,7 @@ body.game-mode {
 .desktop-ui .screen-game .t5-1:hover { transform: scale(1.18); }
 .desktop-ui .screen-game .t5-1:active { transform: scale(0.90); }
 
-.screen-game .c6 {
+.screen-game .c4 {
   position: absolute;
   bottom: 1539px;
   right: 750px;
@@ -1224,14 +1224,14 @@ body.game-mode {
 
 /* clothes */
 
-/* Make sure swapped images don't block arrow clicks */
-.desktop-ui .screen-game .slot-item {
-  pointer-events: none;
-}
-
-/* Optional: avoid weird stretching and keep aspect ratio */
-.desktop-ui .screen-game .slot-item {
-  height: auto;
+.desktop-ui .screen-game .slot-item { pointer-events: auto; z-index: 6; cursor: pointer; }
+.desktop-ui .screen-game .t1-1, .desktop-ui .screen-game .t1-2,
+.desktop-ui .screen-game .t2-1, .desktop-ui .screen-game .t2-2,
+.desktop-ui .screen-game .t3-1, .desktop-ui .screen-game .t3-2,
+.desktop-ui .screen-game .t4-1, .desktop-ui .screen-game .t4-2,
+.desktop-ui .screen-game .t5-1, .desktop-ui .screen-game .t5-2,
+.desktop-ui .screen-game .t6-1, .desktop-ui .screen-game .t6-2 {
+  z-index: 10;
 }
 
 

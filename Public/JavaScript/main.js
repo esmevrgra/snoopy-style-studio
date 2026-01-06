@@ -360,11 +360,13 @@ document.addEventListener("DOMContentLoaded", () => {
           indices.set(slot, 0);
           render(slot);
 
-          if (slot.wearEl) {
-            slot.wearEl.src = "";
+          if (slot.wearEl)
+            if (slot.wearEl) {
             slot.wearEl.classList.remove("show");
+            slot.wearEl.removeAttribute("src");
             slot.wearEl.removeAttribute("data-item");
-          }
+}
+
         });
       }
 
