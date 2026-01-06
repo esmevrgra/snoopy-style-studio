@@ -1395,3 +1395,21 @@ body.game-mode {
   --y: 36px;
   --w: 560px;
 }
+
+/* wearing */
+/* base position for the hat-wearing layer */
+.screen-game .wear-1{
+  position:absolute;
+  left: 240px;
+  bottom: 820px;
+
+  width: var(--w, 600px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+  pointer-events:none;
+  opacity:0;
+}
+.screen-game .wear-1.show{ opacity:1; }
+
+/* per-item adjustments */
+.screen-game .wear-1[data-item="my-melo"]{ --x: 20px; --y: 10px; --w: 20px; }
+.screen-game .wear-1[data-item="snorlax"]{ --x: 0px;  --y: 0px;  --w: 110px; }

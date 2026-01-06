@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!scene) return;
 
     const isMobile = window.innerWidth <= DESKTOP_BP;
-
     if (isMobile) {
       scene.style.removeProperty("--scale");
       return;
@@ -30,12 +29,11 @@ document.addEventListener("DOMContentLoaded", () => {
   applySceneScale();
   window.addEventListener("resize", applySceneScale);
 
-  // ---------- Audio elements ----------
+  // ---------- Audio ----------
   const bgm = document.getElementById("bgm");
   const notifSfx = document.getElementById("notifSfx");
   const clickSfx = document.getElementById("clickSfx");
 
-  // ---------- Audio functions ----------
   function playMusic() {
     if (!bgm) return Promise.resolve(false);
     bgm.volume = 0.35;
@@ -61,10 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
     return playSfx(clickSfx, 0.9);
   }
 
-  // Try to start music as soon as the page loads (often blocked)
   playMusic();
 
-  // Fallback: start music on first interaction anywhere
   const unlockMusic = () => {
     playMusic();
     window.removeEventListener("pointerdown", unlockMusic);
@@ -79,8 +75,16 @@ document.addEventListener("DOMContentLoaded", () => {
     return document.querySelector(isMobile ? "#mobileUI" : "#desktopUI");
   }
 
+  // Prevent double-wiring listeners
+  function alreadyWired(ui) {
+    return ui && ui.dataset && ui.dataset.wired === "1";
+  }
+  function markWired(ui) {
+    if (ui && ui.dataset) ui.dataset.wired = "1";
+  }
+
   function wireUI(ui) {
-    if (!ui) return;
+    if (!ui || alreadyWired(ui)) return;
 
     const mainScreen = ui.querySelector(".screen-main");
     const notifScreen = ui.querySelector(".screen-message");
@@ -91,7 +95,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const openTrigger = ui.querySelector(".open-trigger");
     const okayBtn = ui.querySelector(".okay-btn");
 
-    // Exit + Reset (image + text)
     const exitBtnImg = ui.querySelector(".exit-btn");
     const exitBtnText = ui.querySelector(".exit");
     const resetBtnImg = ui.querySelector(".reset-btn");
@@ -155,7 +158,6 @@ document.addEventListener("DOMContentLoaded", () => {
       gameScreen.classList.add("active");
     }
 
-    // GO BACK to main screen
     function goHome() {
       document.body.classList.remove("game-mode");
 
@@ -169,125 +171,118 @@ document.addEventListener("DOMContentLoaded", () => {
       if (okayTimer) clearTimeout(okayTimer);
     }
 
-    // ---------- Asset carousels + wearing ----------
-    // Returns a "resetAll()" function we can call from Reset button
+    // ---------- Carousels + Wearing ----------
     function setupCarousels() {
       const slots = [
         {
-          // Circle 1 (hat)
+          // Slot 1 (hat)
           itemEl: ui.querySelector(".santa-hat"),
           prevEl: ui.querySelector(".t1-1"),
           nextEl: ui.querySelector(".t1-2"),
-          clickEl: ui.querySelector(".c1"),
+          applyEl: ui.querySelector(".c1"),
           wearEl: ui.querySelector(".wear-1"),
-
           names: ["santa-hat", "my-melo", "snorlax"],
-          items: [
+          previewSrc: [
             "/assets/clothes/santa-hat.png",
             "/assets/clothes/my-melo.png",
             "/assets/clothes/snorlax.png",
           ],
-          wearing: [
+          wearSrc: [
             "/assets/clothes/wearing/santa-hat-wearing.png",
             "/assets/clothes/wearing/melo-wear.png",
             "/assets/clothes/wearing/snor-wear.png",
           ],
         },
         {
-          // Circle 2 (sweater)
+          // Slot 2 (sweater)
           itemEl: ui.querySelector(".red-sweat"),
           prevEl: ui.querySelector(".t2-1"),
           nextEl: ui.querySelector(".t2-2"),
-          clickEl: ui.querySelector(".c2"),
+          applyEl: ui.querySelector(".c2"),
           wearEl: ui.querySelector(".wear-2"),
-
           names: ["red-sweat", "pink-sweat", "purple-sweat"],
-          items: [
+          previewSrc: [
             "/assets/clothes/red-sweat.png",
             "/assets/clothes/pink-sweat.png",
             "/assets/clothes/purple-sweat.png",
           ],
-          wearing: [
+          wearSrc: [
             "/assets/clothes/wearing/red-sweat-wear.png",
             "/assets/clothes/wearing/pink-sweat-wear.png",
             "/assets/clothes/wearing/purple-sweat-wear.png",
           ],
         },
         {
-          // Circle 3 (jacket)
+          // Slot 3 (jacket)
           itemEl: ui.querySelector(".red-jack"),
           prevEl: ui.querySelector(".t3-1"),
           nextEl: ui.querySelector(".t3-2"),
-          clickEl: ui.querySelector(".c3"),
+          applyEl: ui.querySelector(".c3"),
           wearEl: ui.querySelector(".wear-3"),
-
           names: ["red-jack", "black-jack", "purple-jack"],
-          items: [
+          previewSrc: [
             "/assets/clothes/red-jack.png",
             "/assets/clothes/black-jack.png",
             "/assets/clothes/purple-jack.png",
           ],
-          wearing: [
+          wearSrc: [
             "/assets/clothes/wearing/red-jack-wear.png",
             "/assets/clothes/wearing/black-jack-wear.png",
             "/assets/clothes/wearing/purple-jack-wear.png",
           ],
         },
         {
-          // Circle 4 (goggles / ear muffs / teddy)
+          // Slot 4 (goggles)
           itemEl: ui.querySelector(".goggles"),
           prevEl: ui.querySelector(".t4-1"),
           nextEl: ui.querySelector(".t4-2"),
-          clickEl: ui.querySelector(".c4"),
+          applyEl: ui.querySelector(".c4"),
           wearEl: ui.querySelector(".wear-4"),
-
           names: ["goggles", "pink-ear", "teddy"],
-          items: [
+          previewSrc: [
             "/assets/clothes/goggles.png",
             "/assets/clothes/pink-ear.png",
             "/assets/clothes/teddy.png",
           ],
-          wearing: [
+          wearSrc: [
             "/assets/clothes/wearing/googles-wearing.png",
             "/assets/clothes/wearing/pink-ear-wear.png",
             "/assets/clothes/wearing/teddy-wear.png",
           ],
         },
         {
-          // Circle 5 (mittens / glasses / purple muffs)
+          // Slot 5 (hands / glasses)
           itemEl: ui.querySelector(".red-hand"),
           prevEl: ui.querySelector(".t5-1"),
           nextEl: ui.querySelector(".t5-2"),
-          clickEl: ui.querySelector(".c5"),
+          applyEl: ui.querySelector(".c5"),
           wearEl: ui.querySelector(".wear-5"),
-
           names: ["red-hand", "glasses", "purple-hand"],
-          items: [
+          previewSrc: [
             "/assets/clothes/red-hand.png",
             "/assets/clothes/glasses.png",
             "/assets/clothes/purple-hand.png",
           ],
-          wearing: [
+          wearSrc: [
             "/assets/clothes/wearing/red-muff-wear.png",
             "/assets/clothes/wearing/glasses-wear.png",
             "/assets/clothes/wearing/purple-muffs-wear.png",
           ],
         },
         {
-          // Circle 6 (plush / beanie / snowboard)
+          // Slot 6 (plush / beanie / snowboard)
           itemEl: ui.querySelector(".gingerbread"),
           prevEl: ui.querySelector(".t6-1"),
           nextEl: ui.querySelector(".t6-2"),
-          clickEl: ui.querySelector(".c6"),
+          applyEl: ui.querySelector(".c6"),
           wearEl: ui.querySelector(".wear-6"),
-
           names: ["gingerbread", "black-beanie", "purple-snowboard"],
-          items: [
+          previewSrc: [
             "/assets/clothes/gingerbread-plush.png",
             "/assets/clothes/black-beanie.png",
             "/assets/clothes/purple-snowboard.png",
           ],
-          wearing: [
+          wearSrc: [
             "/assets/clothes/wearing/ginger-wear.png",
             "/assets/clothes/wearing/black-beanie-wearing.png",
             "/assets/clothes/wearing/purple-snow-wear.png",
@@ -295,80 +290,65 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       ];
 
-      // Keep indices so Reset can return to the first item in each slot
-      const indices = new Map();
+      const idx = new Map();
 
-      function render(slot) {
-        const i = indices.get(slot) ?? 0;
-        slot.itemEl.src = slot.items[i];
-
-        // For your per-item CSS tweaks (like you did with santa-hat[data-item="my-melo"])
-        if (slot.names) slot.itemEl.dataset.item = slot.names[i];
+      function setPreview(slot) {
+        const i = idx.get(slot) ?? 0;
+        if (slot.itemEl) slot.itemEl.src = slot.previewSrc[i];
+        if (slot.itemEl && slot.names) slot.itemEl.dataset.item = slot.names[i];
       }
 
-      function applyToSnoopy(slot) {
+      function applyWear(slot) {
+        const i = idx.get(slot) ?? 0;
         if (!slot.wearEl) return;
-        const i = indices.get(slot) ?? 0;
 
-        slot.wearEl.src = slot.wearing[i];
+        slot.wearEl.src = slot.wearSrc[i];
         slot.wearEl.classList.add("show");
-
-        // Optional: lets you do wear-layer CSS tweaks later:
-        // .wear-1[data-item="my-melo"] { ... }
         if (slot.names) slot.wearEl.dataset.item = slot.names[i];
       }
 
+      function resetAll() {
+        slots.forEach((slot) => {
+          idx.set(slot, 0);
+          setPreview(slot);
+
+          if (slot.wearEl) {
+            slot.wearEl.classList.remove("show");
+            slot.wearEl.removeAttribute("data-item");
+            slot.wearEl.src = "";
+          }
+        });
+      }
+
+      // init + listeners
       slots.forEach((slot) => {
         if (!slot.itemEl || !slot.prevEl || !slot.nextEl) return;
 
-        indices.set(slot, 0);
-        render(slot);
+        idx.set(slot, 0);
+        setPreview(slot);
 
         slot.prevEl.addEventListener("click", () => {
           playClick();
-          const i = indices.get(slot) ?? 0;
-          indices.set(slot, (i - 1 + slot.items.length) % slot.items.length);
-          render(slot);
+          const i = idx.get(slot) ?? 0;
+          idx.set(slot, (i - 1 + slot.previewSrc.length) % slot.previewSrc.length);
+          setPreview(slot);
         });
 
         slot.nextEl.addEventListener("click", () => {
           playClick();
-          const i = indices.get(slot) ?? 0;
-          indices.set(slot, (i + 1) % slot.items.length);
-          render(slot);
+          const i = idx.get(slot) ?? 0;
+          idx.set(slot, (i + 1) % slot.previewSrc.length);
+          setPreview(slot);
         });
 
-        // Click circle to apply
-        if (slot.clickEl) {
-          slot.clickEl.addEventListener("click", () => {
+        // Apply by clicking the CIRCLE ICON
+        if (slot.applyEl) {
+          slot.applyEl.addEventListener("click", () => {
             playClick();
-            applyToSnoopy(slot);
+            applyWear(slot);
           });
         }
-
-        // Optional: also allow clicking the item to apply
-        slot.itemEl.addEventListener("click", () => {
-          playClick();
-          applyToSnoopy(slot);
-        });
       });
-
-      // Reset function: return previews to first item + clear Snoopy layers
-      function resetAll() {
-        slots.forEach((slot) => {
-          if (!slot.itemEl) return;
-          indices.set(slot, 0);
-          render(slot);
-
-          if (slot.wearEl)
-            if (slot.wearEl) {
-            slot.wearEl.classList.remove("show");
-            slot.wearEl.removeAttribute("src");
-            slot.wearEl.removeAttribute("data-item");
-}
-
-        });
-      }
 
       return resetAll;
     }
@@ -392,7 +372,6 @@ document.addEventListener("DOMContentLoaded", () => {
         goHome();
       });
     }
-
     if (exitBtnText) {
       exitBtnText.addEventListener("click", () => {
         playClick();
@@ -400,14 +379,12 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Reset (image + text)
     if (resetBtnImg) {
       resetBtnImg.addEventListener("click", () => {
         playClick();
         if (typeof resetAll === "function") resetAll();
       });
     }
-
     if (resetBtnText) {
       resetBtnText.addEventListener("click", () => {
         playClick();
@@ -415,9 +392,21 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     }
 
-    // Ensure game starts hidden
     if (gameScreen) gameScreen.classList.remove("active");
+
+    markWired(ui);
   }
 
+  // Wire initial
   wireUI(getActiveUI());
+
+  // If you resize across breakpoint, wire the other UI once
+  let lastIsMobile = window.innerWidth <= DESKTOP_BP;
+  window.addEventListener("resize", () => {
+    const nowIsMobile = window.innerWidth <= DESKTOP_BP;
+    if (nowIsMobile !== lastIsMobile) {
+      wireUI(getActiveUI());
+      lastIsMobile = nowIsMobile;
+    }
+  });
 });
