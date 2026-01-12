@@ -64,6 +64,7 @@ body.game-mode {
   .desktop-ui { display: none; }
   .mobile-ui { display: block; }
 
+  
   /* On mobile, DO NOT keep a 5920px canvas.
      Let mobile-stage own the viewport. */
   .scene {
