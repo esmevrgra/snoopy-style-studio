@@ -1183,8 +1183,21 @@ body.game-mode {
   height: auto;
   pointer-events: none;
 }
+.desktop-ui .screen-game .snoopy-stack img.wear {
+  left: var(--x, 0px);
+  bottom: var(--y, 0px);
+  width: var(--w, 100%);
+}
+
 
 /* wear layers start hidden until chosen */
+/* Allow per-item offsets/scales for wear layers */
+.desktop-ui .screen-game .snoopy-stack .wear {
+  left: var(--x, 0px);
+  bottom: var(--y, 0px);
+  width: var(--w, 100%);
+}
+
 .screen-game .wear {
   opacity: 0;
   transition: opacity 0.15s ease;
@@ -1397,6 +1410,56 @@ body.game-mode {
   --w: 560px;
 }
 
+/* gaming screen item wearing*/
+.desktop-ui .screen-game .wear-1[data-item="santa-hat"] {
+  --x: 0px;
+  --y: -1320px;
+  --w: 780px;
+  --r: -10deg;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-2[data-item="red-sweat"] {
+  --x: 419px;
+  --y: -580px;
+  --w: 430px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-3[data-item="red-jack"] {
+  --x: 419px;
+  --y: -580px;
+  --w: 430px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-4[data-item="goggles"] {
+  --x: 300px;
+  --y: -1220px;
+  --w: 540px;
+  --r: -15deg;
+  z-index: 61;
+}
+
+.desktop-ui .screen-game .wear-5[data-item="red-hand"] {
+  --x: 470px;
+  --y: -585px;
+  --w: 163px;
+  --r: +5deg;
+  z-index: 62;
+}
+
+.desktop-ui .screen-game .wear-6[data-item="gingerbread"] {
+  --x: 710px;
+  --y: -455px;
+  --w: 623px;
+  --r: +15deg;
+  z-index: 62;
+}
+
+
+
+
 /* wearing */
 /* base position for the hat-wearing layer */
 .screen-game .wear-1{
@@ -1414,3 +1477,13 @@ body.game-mode {
 /* per-item adjustments */
 .screen-game .wear-1[data-item="my-melo"]{ --x: 20px; --y: 10px; --w: 20px; }
 .screen-game .wear-1[data-item="snorlax"]{ --x: 0px;  --y: 0px;  --w: 110px; }
+
+.desktop-ui .screen-game .snoopy-stack img.wear {
+  left: 0;
+  bottom: 0;
+  width: var(--w, 100%);
+  transform:
+    translate(var(--x, 0px), var(--y, 0px))
+    rotate(var(--r, 0deg));
+  transform-origin: center;
+}

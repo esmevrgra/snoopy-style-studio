@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "/assets/clothes/snorlax.png",
           ],
           wearSrc: [
-            "/assets/clothes/wearing/santa-hat-wearing.png",
+            "/assets/clothes/wearing/santa-hat-wear.png",
             "/assets/clothes/wearing/melo-wear.png",
             "/assets/clothes/wearing/snor-wear.png",
           ],
@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
             "/assets/clothes/teddy.png",
           ],
           wearSrc: [
-            "/assets/clothes/wearing/googles-wearing.png",
+            "/assets/clothes/wearing/googles-wear.png",
             "/assets/clothes/wearing/pink-ear-wear.png",
             "/assets/clothes/wearing/teddy-wear.png",
           ],
