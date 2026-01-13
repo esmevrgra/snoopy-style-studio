@@ -1410,6 +1410,7 @@ body.game-mode {
   --w: 560px;
 }
 
+/*styling for the clothes on the gaming screeen!!*/
 /* gaming screen item wearing*/
 .desktop-ui .screen-game .wear-1[data-item="santa-hat"] {
   --x: 0px;
@@ -1456,6 +1457,95 @@ body.game-mode {
   --r: +15deg;
   z-index: 62;
 }
+
+
+
+/* second section for the clothes*/
+
+
+.desktop-ui .screen-game .wear-2[data-item="pink-sweat"] {
+  --x: 439px;
+  --y: -580px;
+  --w: 380px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-3[data-item="black-jack"] {
+  --x: 410px;
+  --y: -580px;
+  --w: 430px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-4[data-item="pink-ear"] {
+  --x: 140px;
+  --y: -961px;
+  --w: 520px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-5[data-item="glasses"] {
+  --x: 390px;
+  --y: -1220px;
+  --w: 540px;
+  --r: -12deg;
+  z-index: 61;
+}
+
+.desktop-ui .screen-game .wear-6[data-item="black-beanie"] {
+  --x: 84px;
+  --y: -1320px;
+  --w: 580px;
+  --r: -20deg;
+  z-index: 60;
+}
+
+
+/* third section for the clothes*/
+.desktop-ui .screen-game .wear-1[data-item="snorlax"] {
+  --x: 710px;
+  --y: -455px;
+  --w: 623px;
+  --r: +15deg;
+  z-index: 62;
+}
+
+.desktop-ui .screen-game .wear-2[data-item="purple-sweat"] {
+  --x: 439px;
+  --y: -580px;
+  --w: 380px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-3[data-item="purple-jack"] {
+  --x: 419px;
+  --y: -580px;
+  --w: 430px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-4[data-item="teddy"] {
+  --x: 710px;
+  --y: -455px;
+  --w: 433px;
+  --r: +15deg;
+  z-index: 62;
+}
+
+.desktop-ui .screen-game .wear-5[data-item="purple-hand"] {
+  --x: 470px;
+  --y: -585px;
+  --w: 163px;
+  --r: +5deg;
+  z-index: 62;
+}
+
+.desktop-ui .screen-game .wear-6[data-item="purple-snowboard"] {
+  --y: -85px;
+  --r: -8deg;
+  z-index:2;
+}
+
 
 
 
