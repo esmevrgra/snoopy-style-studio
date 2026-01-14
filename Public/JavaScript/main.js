@@ -75,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
     return document.querySelector(isMobile ? "#mobileUI" : "#desktopUI");
   }
 
-  // Prevent double-wiring listeners
   function alreadyWired(ui) {
     return ui && ui.dataset && ui.dataset.wired === "1";
   }
@@ -232,7 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
           ],
         },
         {
-          // Slot 4 (goggles)
+          // Slot 4 (goggles / ears)
           itemEl: ui.querySelector(".goggles"),
           prevEl: ui.querySelector(".t4-1"),
           nextEl: ui.querySelector(".t4-2"),
@@ -290,6 +289,39 @@ document.addEventListener("DOMContentLoaded", () => {
         },
       ];
 
+      // 1) Only ONE headwear item at a time
+      const HEADWEAR_ITEMS = new Set([
+        "santa-hat",
+        "my-melo",
+        "snorlax",
+        "pink-ear",
+        "black-beanie",
+      ]);
+
+      // 2) Sweaters & jackets mutually exclusive (only one outerwear total)
+      const OUTERWEAR_ITEMS = new Set([
+        "red-sweat",
+        "pink-sweat",
+        "purple-sweat",
+        "red-jack",
+        "black-jack",
+        "purple-jack",
+      ]);
+
+      // 3) my-melo/snorlax mutually exclusive with gingerbread plush
+      // (If my-melo or snorlax is equipped, remove gingerbread; if gingerbread equipped, remove my-melo/snorlax)
+      const MELO_SNOR_VS_GINGER = new Set([
+        "my-melo",
+        "snorlax",
+        "gingerbread",
+      ]);
+
+      // 4) goggles and glasses mutually exclusive
+      const GOGGLES_VS_GLASSES = new Set([
+        "goggles",
+        "glasses",
+      ]);
+
       const idx = new Map();
 
       function setPreview(slot) {
@@ -298,25 +330,74 @@ document.addEventListener("DOMContentLoaded", () => {
         if (slot.itemEl && slot.names) slot.itemEl.dataset.item = slot.names[i];
       }
 
-      function applyWear(slot) {
+      function clearWear(slot) {
+        if (!slot?.wearEl) return;
+        slot.wearEl.classList.remove("show");
+        slot.wearEl.removeAttribute("data-item");
+        slot.wearEl.removeAttribute("src");
+      }
+
+      function removeOtherInSet(currentWearEl, setOfNames) {
+        slots.forEach((s) => {
+          if (!s.wearEl) return;
+          if (s.wearEl === currentWearEl) return;
+
+          const wornName = s.wearEl.dataset.item;
+          if (s.wearEl.classList.contains("show") && setOfNames.has(wornName)) {
+            clearWear(s);
+          }
+        });
+      }
+
+      function toggleWear(slot) {
         const i = idx.get(slot) ?? 0;
         if (!slot.wearEl) return;
 
-        slot.wearEl.src = slot.wearSrc[i];
+        const itemName = slot.names?.[i];
+        const itemSrc = slot.wearSrc?.[i];
+        if (!itemName || !itemSrc) return;
+
+        const isAlreadyWorn =
+          slot.wearEl.classList.contains("show") &&
+          slot.wearEl.dataset.item === itemName;
+
+        // click same item again -> remove it
+        if (isAlreadyWorn) {
+          clearWear(slot);
+          return;
+        }
+
+        // A) Headwear replaces other headwear
+        if (HEADWEAR_ITEMS.has(itemName)) {
+          removeOtherInSet(slot.wearEl, HEADWEAR_ITEMS);
+        }
+
+        // B) Sweater/jacket replaces other outerwear
+        if (OUTERWEAR_ITEMS.has(itemName)) {
+          removeOtherInSet(slot.wearEl, OUTERWEAR_ITEMS);
+        }
+
+        // C) my-melo/snorlax <-> gingerbread mutually exclusive
+        if (MELO_SNOR_VS_GINGER.has(itemName)) {
+          removeOtherInSet(slot.wearEl, MELO_SNOR_VS_GINGER);
+        }
+
+        // D) goggles <-> glasses mutually exclusive
+        if (GOGGLES_VS_GLASSES.has(itemName)) {
+          removeOtherInSet(slot.wearEl, GOGGLES_VS_GLASSES);
+        }
+
+        // Equip selected item
+        slot.wearEl.src = itemSrc;
+        slot.wearEl.dataset.item = itemName;
         slot.wearEl.classList.add("show");
-        if (slot.names) slot.wearEl.dataset.item = slot.names[i];
       }
 
       function resetAll() {
         slots.forEach((slot) => {
           idx.set(slot, 0);
           setPreview(slot);
-
-          if (slot.wearEl) {
-            slot.wearEl.classList.remove("show");
-            slot.wearEl.removeAttribute("data-item");
-            slot.wearEl.src = "";
-          }
+          clearWear(slot);
         });
       }
 
@@ -341,11 +422,11 @@ document.addEventListener("DOMContentLoaded", () => {
           setPreview(slot);
         });
 
-        // Apply by clicking the CIRCLE ICON
+        // Apply / toggle by clicking the circle icon
         if (slot.applyEl) {
           slot.applyEl.addEventListener("click", () => {
             playClick();
-            applyWear(slot);
+            toggleWear(slot);
           });
         }
       });

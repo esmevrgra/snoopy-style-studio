@@ -1532,10 +1532,10 @@ body.game-mode {
 }
 
 .desktop-ui .screen-game .wear-4[data-item="teddy"] {
-  --x: 710px;
+  --x: 75px;
   --y: -455px;
-  --w: 433px;
-  --r: +15deg;
+  --w: 403px;
+  --r: -8deg;
   z-index: 62;
 }
 
