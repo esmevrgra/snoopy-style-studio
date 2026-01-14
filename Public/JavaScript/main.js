@@ -1,4 +1,3 @@
-// public/javascript/main.js
 
 document.addEventListener("DOMContentLoaded", () => {
   const DESKTOP_BP = 768;
