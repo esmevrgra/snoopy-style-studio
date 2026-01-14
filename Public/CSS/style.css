@@ -1461,6 +1461,13 @@ body.game-mode {
 
 
 /* second section for the clothes*/
+.desktop-ui .screen-game .wear-1[data-item="my-melo"]{
+  --x: 840px;
+  --y: -455px;
+  --w: 383px;
+  --r: +7deg;
+  z-index: 62;
+}
 
 
 .desktop-ui .screen-game .wear-2[data-item="pink-sweat"] {
