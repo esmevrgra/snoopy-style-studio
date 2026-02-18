@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Snoopy Style Studio</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&amp;family=Jost:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&amp;family=Fredoka:wght@300..700&amp;family=Jost:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&amp;family=Fredoka:wght@300..700&amp;family=Jersey+25&amp;family=Jost:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <audio id="bgm" src="/audio/music.mp3" loop preload="auto"></audio>
+    <audio id="notifSfx" src="/audio/notif.mp3" preload="auto"></audio>
+    <audio id="clickSfx" src="/audio/click.mp3" preload="auto"></audio>
+    <div class="app">
+      <div class="stage">
+        <div class="scene">
+          <!-- =========================-->
+          <!-- DESKTOP UI-->
+          <!-- =========================-->
+          <div class="desktop-ui" id="desktopUI" data-ui="desktop">
+            <!-- MAIN SCREEN (desktop)-->
+            <div class="screen screen-main">
+              <!-- title area updated-->
+              <div class="title-area">
+                <h1 class="title-text">SNOOPY</h1>
+                <p class="subtitle">style studio</p><img class="dcloud" src="/assets/title/dark_purple_backgrd_cloud.png" alt=""><img class="lcloud" src="/assets/title/light_purple_cloud.png" alt=""><img class="santahat" src="/assets/title/santa_hat.png" alt=""><img class="star star-1" src="/assets/title/star-1.png" alt=""><img class="star star-2" src="/assets/title/star-2.png" alt=""><img class="heart" src="/assets/title/heart_smiling.png" alt="">
+              </div>
+              <!-- snoopy updated-->
+              <div class="character"><img class="snoopy" src="/assets/characters/pixel-snoopy.png" alt="Snoopy"></div>
+              <!-- play button updated-->
+              <div class="play-button"><img class="whole-play-button" src="/assets/play-button/whole-play-button.png" alt=""><img class="gift" src="/assets/play-button/gift.png" alt=""><img class="star starr" src="/assets/play-button/Star.png" alt=""><img class="star star7" src="/assets/play-button/star-7.png" alt=""><img class="star starb" src="/assets/play-button/star-b.png" alt=""></div>
+              <!-- gift tag updated-->
+              <div class="gift-tag"><img class="purple-tag" src="/assets/gift-tag/tag-hole.png" alt=""><img class="star star-a" src="/assets/gift-tag/star-a.png" alt=""><img class="star star-3" src="/assets/gift-tag/star-3.png" alt=""><img class="tag-flwr" src="/assets/gift-tag/tag-flwr.png" alt=""><img class="key" src="/assets/gift-tag/key.png" alt=""></div>
+              <div class="tag-text">
+                <p>For Andrea ♡</p>
+                <p>Love,</p>
+                <p>your big sister</p>
+              </div>
+            </div>
+            <!-- MESSAGE SCREEN (desktop)-->
+            <div class="screen screen-message">
+              <div class="message-wrap"><img class="message-bubble" src="/assets/notification-message/mes-box-empty.png" alt="Message">
+                <div class="open-trigger"><img class="o-button" src="/assets/notification-message/o-button.png" alt="">
+                  <p class="message-sub">tap to open...</p>
+                </div><img class="bell" src="/assets/notification-message/bell.png" alt=""><img class="flower" src="/assets/notification-message/flower.png" alt="">
+                <p class="message-title">you have a message from</p>
+                <p class="message-title2">your sister!</p>
+                <p class="mess">MESSAGES (1)</p>
+              </div>
+            </div>
+            <!-- OPENED MESSAGE SCREEN (desktop)-->
+            <div class="screen screen-message-open">
+              <div class="letter-wrap"><img class="message-center" src="/assets/notification-message/sister-mes/message-center.png" alt="Letter">
+                <p class="from">FROM:  SISTER</p>
+                <p class="letter-text">Hiii Beboo!<br>Merry Christmas!!<br><br>I love you more than all the presents<br>under the Christmas tree hehe<br><br>I think Snoopy needs help getting<br>dressed for the winter!<br><br>Love,<br>Your Big Sister</p><img class="okay-btn" src="/assets/notification-message/sister-okay/okay-cat.png" alt=""><img class="flw-d" src="/assets/notification-message/sister-mes/flower-d.png" alt=""><img class="s-d" src="/assets/notification-message/sister-mes/star-d.png" alt="">
+              </div>
+            </div>
+            <!-- GAME SCREEN (desktop)-->
+            <div class="screen screen-game"><img class="game-bg" src="/assets/gameing-screen/gaming-background.png" alt="">
+              <div class="game-ui"><img class="gaming-logo" src="/assets/gameing-screen/gaming-logo.png" alt="Snoopy Style Studio"><img class="exit-btn" src="/assets/gameing-screen/exit-cloud.png" alt="Exit"><img class="reset-btn" src="/assets/gameing-screen/reset-gloud.png" alt="Reset"><img class="stand" src="/assets/gameing-screen/stand.png" alt="stand">
+                <div class="snoopy-stack"> <img class="snoop" src="/assets/gameing-screen/snoopy-pi.png" alt=""><img class="wear wear-1" src="" alt=""><img class="wear wear-2" src="" alt=""><img class="wear wear-3" src="" alt=""><img class="wear wear-4" src="" alt=""><img class="wear wear-5" src="" alt=""><img class="wear wear-6" src="" alt=""></div><img class="c1" src="/assets/gameing-screen/c1.png" alt=""><img class="t1-1" src="/assets/gameing-screen/t1-1.png" alt=""><img class="t1-2" src="/assets/gameing-screen/t1-2.png" alt=""><img class="c2" src="/assets/gameing-screen/c2.png" alt=""><img class="t2-1" src="/assets/gameing-screen/t2-1.png" alt=""><img class="t2-2" src="/assets/gameing-screen/t2-2.png" alt=""><img class="c3" src="/assets/gameing-screen/c3.png" alt=""><img class="t3-1" src="/assets/gameing-screen/t3-1.png" alt=""><img class="t3-2" src="/assets/gameing-screen/t3-2.png" alt=""><img class="c4" src="/assets/gameing-screen/c4.png" alt=""><img class="t4-1" src="/assets/gameing-screen/t4-1.png" alt=""><img class="t4-2" src="/assets/gameing-screen/t4-2.png" alt=""><img class="c5" src="/assets/gameing-screen/c5.png" alt=""><img class="t5-1" src="/assets/gameing-screen/t5-1.png" alt=""><img class="t5-2" src="/assets/gameing-screen/t5-2.png" alt=""><img class="c6" src="/assets/gameing-screen/c6.png" alt=""><img class="t6-1" src="/assets/gameing-screen/t6-1.png" alt=""><img class="t6-2" src="/assets/gameing-screen/t6-2.png" alt=""><img class="santa-hat slot-item" src="/assets/clothes/santa-hat.png" alt="santa-hat"><img class="red-sweat slot-item" src="/assets/clothes/red-sweat.png" alt="red-sweater"><img class="red-jack slot-item" src="/assets/clothes/red-jack.png" alt="red-jacket"><img class="goggles slot-item" src="/assets/clothes/goggles.png" alt="goggles"><img class="red-hand slot-item" src="/assets/clothes/red-hand.png" alt="red-hand"><img class="gingerbread slot-item" src="/assets/clothes/gingerbread-plush.png" alt="gingerbread-plush">
+                <p class="reset">RESET</p>
+                <p class="exit">EXIT</p>
+              </div>
+            </div>
+          </div>
+          <!-- =========================-->
+          <!-- MOBILE UI-->
+          <!-- =========================-->
+          <div class="mobile-ui" id="mobileUI" data-ui="mobile">
+            <div class="mobile-stage">
+              <!-- MOBILE MAIN SCREEN-->
+              <div class="screen screen-main screen-main-m"><img class="mobile-bg" src="/assets/mobile-design/mobile-background.png" alt=""><img class="m-title" src="/assets/mobile-design/main-m/title-mobile.png" alt=""><img class="m-tag" src="/assets/mobile-design/main-m/tag-mobile.png" alt=""><img class="m-gift" src="/assets/mobile-design/main-m/gift-mobile.png" alt=""><img class="m-star" src="/assets/mobile-design/main-m/star-a-mobile.png" alt=""><img class="m-snoopy" src="/assets/mobile-design/main-m/snoopy-mobile.png" alt="">
+                <div class="play-button play-button-m"><img class="m-play" src="/assets/mobile-design/main-m/play-b-mobile.png" alt=""></div>
+              </div>
+              <!-- MOBILE NOTIF SCREEN-->
+              <div class="screen screen-message screen-message-m"><img class="mobile-bg" src="/assets/mobile-design/mobile-background.png" alt=""><img class="m-notif" src="/assets/mobile-design/notif-m/notif-mobile.png" alt=""><img class="m-bell" src="/assets/mobile-design/notif-m/bell-mobile.png" alt=""><img class="m-flower" src="/assets/mobile-design/notif-m/flower-a-mobile.png" alt="">
+                <div class="open-trigger open-trigger-m"></div>
+              </div>
+              <!-- MOBILE OPEN MESSAGE SCREEN-->
+              <div class="screen screen-message-open screen-message-open-m"><img class="mobile-bg" src="/assets/mobile-design/mobile-background.png" alt=""><img class="m-msgbox" src="/assets/mobile-design/text-m/msg-box-mobile.png" alt=""><img class="m-flowerb" src="/assets/mobile-design/text-m/flower-b-mobile.png" alt=""><img class="m-starb" src="/assets/mobile-design/text-m/star-b-mobile.png" alt="">
+                <p class="letter-text letter-text-m">Hiii Beboo!<br>Merry Christmas!!<br><br>I love you more than all the presents<br>under the Christmas tree hehe<br><br>I think Snoopy needs help getting<br>dressed for the winter!<br><br>Love,<br>Your Big Sister</p><img class="okay-btn okay-btn-m" src="/assets/mobile-design/text-m/okay-btn-mobile.png" alt="">
+              </div>
+              <!-- MOBILE GAME SCREEN  (FIXED INDENTATION)-->
+              <div class="screen screen-game screen-game-m"><img class="mobile-bg" src="/assets/gameing-screen/gaming-background.png" alt="">
+                <div class="game-ui"><img class="gaming-logo" src="/assets/gameing-screen/gaming-logo.png" alt="Snoopy Style Studio"><img class="exit-btn" src="/assets/gameing-screen/exit-cloud.png" alt="Exit"><img class="reset-btn" src="/assets/gameing-screen/reset-cloud.png" alt="Reset"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/javascript/main.js" defer></script>
+  </body>
+</html>

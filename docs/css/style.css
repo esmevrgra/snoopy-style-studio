@@ -1,0 +1,1678 @@
+/* background */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  background: url("/assets/title/brick-background.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+body.game-mode {
+  background: url("/assets/gameing-screen/gaming-background.png") no-repeat center center fixed;
+  background-size: cover;
+}
+
+/* =========================
+   ROOT WRAPPERS
+   ========================= */
+.app {
+  width: 100vw;
+  height: 100vh;
+}
+
+/* viewport wrapper (prevents 5920px scene from affecting layout) */
+.stage {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* =========================
+   FIXED DESKTOP CANVAS + SCALE-TO-FIT
+   Only apply on desktop widths
+   ========================= */
+@media (min-width: 769px) {
+  .scene {
+    position: absolute;
+    top: 0;
+    left: 50%;
+
+    width: 5920px;
+    height: 2900px;
+
+    transform-origin: top center;
+
+    /* scale comes from JS; fallback to 1 */
+    transform: translateX(-50%) scale(var(--scale, 1));
+  }
+}
+
+/* =========================
+   DESKTOP vs MOBILE UI TOGGLES
+   ========================= */
+.desktop-ui { display: block; }
+.mobile-ui { display: none; }
+
+/* =========================
+   TITLE
+   ========================= */
+.title-text {
+  position: relative;
+  text-align: center;
+  margin-top: 120px;
+  z-index: 5;
+
+  font-family: "Baloo 2", cursive;
+  font-size: 580px;
+  font-weight: 900;
+  letter-spacing: 6px;
+
+  color: #ffffff;
+
+  text-shadow:
+    15px 15px 0 #b7b2e3,
+    25px 25px 0 #8f8f8f;
+}
+
+.subtitle {
+  position: relative;
+  z-index: 8;
+
+  margin-top: -658px;
+  text-align: center;
+
+  font-family: "Fredoka", sans-serif;
+  font-size: 150px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+
+  color: #ffffff;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.title-area {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* dark cloud (back) */
+.dcloud {
+  position: absolute;
+  top: -50px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3300px;
+  z-index: 1;
+}
+
+/* light cloud (front) */
+.lcloud {
+  position: absolute;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3000px;
+  z-index: 2;
+}
+
+.santahat {
+  position: absolute;
+  z-index: 9;
+  top: 150px;
+  left: -220px;
+  width: 450px;
+}
+
+.star.star-1 {
+  position: absolute;
+  z-index: 9;
+  top: 764px;
+  left: -260px;
+  width: 350px;
+}
+
+.star.star-2 {
+  position: absolute;
+  z-index: 9;
+  top: 264px;
+  right: -380px;
+  width: 350px;
+}
+
+.heart {
+  position: absolute;
+  z-index: 9;
+  top: 664px;
+  right: -82px;
+  width: 450px;
+}
+
+/* snoopy */
+.snoopy {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 1700px;
+}
+
+/*
+   PLAY BUTTON (DESKTOP)*/
+
+/* wrapper — hover target */
+.desktop-ui .play-button {
+  position: absolute;
+  bottom: 150px;
+  left: 30%;
+
+  width: 2400px;
+  height: 900px;
+
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.25s cubic-bezier(.34,1.56,.64,1);
+
+  cursor: pointer;
+}
+
+/* hover + click */
+.desktop-ui .play-button:hover {
+  transform: scale(1.08);
+}
+
+.desktop-ui .play-button:active {
+  transform: scale(0.96);
+}
+
+/* all images inside move together */
+.play-button img {
+  position: absolute;
+  pointer-events: none;
+}
+
+/* base button image */
+.whole-play-button {
+  bottom: 0;
+  left: 0;
+  width: 2400px;
+}
+
+/* decorations */
+.gift {
+  bottom: 450px;
+  left: 5%;
+  width: 370px;
+}
+
+.star.starr {
+  bottom: 280px;
+  left: 15%;
+  width: 320px;
+}
+
+.star.star7 {
+  bottom: 470px;
+  right: 5%;
+  width: 390px;
+}
+
+.star.starb {
+  bottom: 310px;
+  right: 15%;
+  width: 306px;
+}
+
+/* star animation for play button */
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.play-button .star {
+  transform-origin: center;
+}
+
+.desktop-ui .play-button:hover .starb {
+  animation: spin 3s linear infinite;
+}
+
+.play-button:hover .star {
+  transform: scale(1.05);
+}
+
+/* gift animation */
+@keyframes shimmy {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(-12deg); }
+  50%  { transform: rotate(12deg); }
+  75%  { transform: rotate(-8deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.gift {
+  transform-origin: top center;
+}
+
+.desktop-ui .play-button:hover .gift {
+  animation: shimmy 2s ease-in-out infinite;
+}
+
+/* gift tag */
+.purple-tag {
+  position: absolute;
+  top: 840px;
+  right: 80px;
+  width: 1620px;
+
+  transform: rotate(10deg);
+  transform-origin: center;
+
+  z-index: 6;
+}
+
+.star.star-a {
+  position: absolute;
+  top: 1400px;
+  right: 1%;
+  transform: translateX(-45%);
+  width: 160px;
+  z-index: 9;
+}
+
+.star.star-3 {
+  position: absolute;
+  top: 1611px;
+  right: 20.7%;
+  transform: translateX(-45%);
+  width: 160px;
+  z-index: 7;
+}
+
+.tag-flwr {
+  position: absolute;
+  top: 1440px;
+  right: 20%;
+  transform: translateX(-50%);
+  width: 206px;
+  z-index: 6;
+}
+
+.key {
+  position: absolute;
+  top: 1840px;
+  right: 17%;
+  width: 270px;
+  z-index: 9;
+}
+
+.tag-text {
+  position: absolute;
+  top: 1270px;
+  right: 260px;
+  width: 900px;
+
+  transform: rotate(-29deg);
+  z-index: 8;
+}
+
+.tag-text p {
+  margin: 0;
+
+  font-family: "Jersey 25";
+  font-size: 130px;
+  font-weight: 2500;
+
+  color: #8781c9;
+
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.45);
+
+  text-shadow:
+    2px 2px 0 rgba(255, 255, 255, 0.6),
+    5px 5px 0 rgba(183, 178, 227, 0.45);
+}
+
+/* =========================
+   SCREEN STACKING (DESKTOP)
+   ========================= */
+.desktop-ui .screen {
+  position: absolute;
+  inset: 0;
+}
+
+/* start: show main, hide message */
+.desktop-ui .screen-message {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.96);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 50;
+}
+
+/* when message screen is active */
+.desktop-ui .screen-message.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* fade out main screen */
+.desktop-ui .screen-main {
+  transition: opacity 0.25s ease;
+  z-index: 10;
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.desktop-ui .screen-main.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* OPENED MESSAGE SCREEN */
+.desktop-ui .screen-message-open {
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.96);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 60;
+}
+
+.desktop-ui .screen-message-open.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+/* center the bubble image */
+.message-bubble {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1900px;
+}
+
+/* --- BUTTON --- */
+.open-trigger {
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  width: 697px;
+  height: 200px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.o-button, .message-sub {
+  transition: transform 0.3s ease;
+  pointer-events: none;
+}
+
+.o-button {
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.message-sub {
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%) scale(1);
+  margin: 0;
+  font-family: "Baloo 2";
+  font-size: 85px;
+  font-weight: 500;
+  color: #6f69a8;
+  text-align: center;
+  width: 80%;
+  white-space: nowrap;
+}
+
+.open-trigger:hover .o-button {
+  transform: scale(1.1);
+}
+.open-trigger:hover .message-sub {
+  transform: translateX(-50%) scale(1.1);
+}
+.open-trigger:active .o-button {
+  transform: scale(0.95);
+}
+.open-trigger:active .message-sub {
+  transform: translateX(-50%) scale(0.95);
+}
+
+.bell {
+  position: absolute;
+  top: 41%;
+  left: 33%;
+  width: 273px;
+  z-index: 9;
+}
+
+.flower {
+  position: absolute;
+  top: 33%;
+  left: 63%;
+  width: 293px;
+  z-index: 2;
+}
+
+/* bell animation */
+@keyframes bell-ring-rest {
+  0%, 70%, 100% { transform: rotate(0deg); }
+  75% { transform: rotate(-12deg); }
+  80% { transform: rotate(12deg); }
+  85% { transform: rotate(-8deg); }
+  90% { transform: rotate(8deg); }
+  95% { transform: rotate(0deg); }
+}
+
+.bell {
+  transform-origin: top center;
+  animation: bell-ring-rest 3s ease-in-out infinite;
+}
+
+/* flower animation */
+@keyframes flower-twirl {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.desktop-ui .screen-message:hover .flower {
+  transform-origin: center;
+  tell: none;
+  animation: flower-twirl 6s ease-in-out infinite;
+}
+
+/* TEXT */
+.message-title {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-family: "Jersey 25";
+  font-size: 140px;
+  color: #6f69a8;
+  text-shadow: 9px 6px 0px rgba(255, 255, 255, 0.9);
+
+  text-align: center;
+  width: 80%;
+}
+
+.message-title2 {
+  position: absolute;
+  top: 44.5%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-family: "Jersey 25";
+  font-size: 140px;
+  color: #6f69a8;
+  text-shadow: 9px 6px 0px rgba(255, 255, 255, 0.9);
+
+  text-align: center;
+  width: 80%;
+}
+
+.mess {
+  position: absolute;
+  top: 30.3%;
+  left: 58.8%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-family: "Baloo 2";
+  font-size: 70px;
+  font-weight: 700%;
+
+  text-shadow:
+    1px 0 0 currentColor,
+   -1px 0 0 currentColor,
+    0 1px 0 currentColor,
+    0 -1px 0 currentColor;
+
+  color: #6f69a8;
+  text-align: center;
+  width: 80%;
+  z-index: 6;
+}
+
+.message-center {
+  width: 2580px;
+  position: absolute;
+  top: 17%;
+  left: 30%;
+}
+
+.letter-wrap {
+  position: absolute;
+  inset: 0;
+}
+
+.letter-text {
+  position: absolute;
+  top: 30%;
+  left: 76%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-family: "Jersey 25";
+  font-size: 112px;
+  color: #6f69a8;
+  text-shadow: 9px 6px 0px rgba(255, 255, 255, 0.9);
+
+  text-align: left;
+  width: 80%;
+}
+
+.from {
+  position: absolute;
+  top: 20%;
+  left: 40%;
+  transform: translateX(-50%);
+  margin: 0;
+
+  font-family: "Baloo 2";
+  font-size: 90px;
+  color: #7E79B2;
+
+  text-shadow:
+    3px 0 0 currentColor,
+   -3px 0 0 currentColor,
+    0 3px 0 currentColor,
+    0 -3px 0 currentColor;
+}
+
+.okay-btn {
+  position: absolute;
+  right: 31%;
+  bottom: 30%;
+  width: 550px;
+  z-index: 5;
+  cursor: pointer;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.92);
+
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.okay-btn.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.okay-btn.show:hover { transform: scale(1.05); }
+.okay-btn.show:active { transform: scale(0.95); }
+
+@keyframes flw-d-twirl {
+  0%   { transform: rotate(0deg); }
+  50%  { transform: rotate(180deg) scale(1.05); }
+  100% { transform: rotate(360deg); }
+}
+
+.flw-d {
+  position: absolute;
+  top: 33%;
+  left: 71%;
+  width: 433px;
+  z-index: 2;
+
+  transform-origin: 50% 50%;
+  animation: flw-d-twirl 6s ease-in-out infinite;
+}
+
+@keyframes star-spin-pulse {
+  0%   { transform: rotate(0deg) scale(1); }
+  50%  { transform: rotate(180deg) scale(1.07); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.s-d {
+  position: absolute;
+  top: 53%;
+  left: 27%;
+  width: 413px;
+  z-index: 2;
+
+  transform-origin: 50% 50%;
+  animation: star-spin-pulse 5s ease-in-out infinite;
+}
+
+
+
+/* =========================
+   MOBILE UI
+   ========================= */
+/* =========================
+   MOBILE UI (EXACT MOCK)
+   ========================= */
+  @media (max-width: 768px) {
+    .desktop-ui { display: none; }
+    .mobile-ui { display: block; }
+  
+    .scene {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      left: 0;
+      transform: none;
+    }
+  
+    .mobile-stage {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+    }
+  
+    /* each screen fills phone */
+    .mobile-ui .screen {
+      position: absolute;
+      inset: 0;
+    }
+  
+    /* background fills phone exactly */
+    .mobile-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  
+    /* all other images are positioned layers */
+    .mobile-stage img:not(.mobile-bg) {
+      position: absolute;
+      height: auto;
+    }
+  
+    /* screen visibility behavior */
+    .mobile-ui .screen-message,
+    .mobile-ui .screen-message-open,
+    .mobile-ui .screen-game {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(0.98);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+  
+    .mobile-ui .screen-main { opacity: 1; pointer-events: auto; }
+  
+    .mobile-ui .screen-message.active,
+    .mobile-ui .screen-message-open.active,
+    .mobile-ui .screen-game.active {
+      opacity: 1;
+      pointer-events: auto;
+      transform: scale(1);
+    }
+  
+    .mobile-ui .screen-main.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+  
+    /* clickable hotspots */
+    .open-trigger-m,
+    .play-button-m {
+      position: absolute;
+      z-index: 50;
+      background: transparent;
+    }
+  
+    .open-trigger-m img,
+    .play-button-m img {
+      pointer-events: none;
+    }
+  
+    /* =========================
+       MAIN SCREEN (matches mock)
+       ========================= */
+    .m-title { 
+      top: 7%;  
+      left: 50%; 
+      transform: translateX(-50%); 
+      width: 82%; 
+      z-index: 10; 
+    }
+    .m-tag { 
+      top: 20%; 
+      left: 50%; 
+      transform: translateX(-50%) 
+      rotate(-18deg); 
+      width: 42%; 
+      z-index: 11; 
+    }
+    .m-gift { 
+      top: 34%; 
+      left: 10%; 
+      width: 20%; 
+      z-index: 12; 
+    }
+    .m-star { 
+      top: 30%; 
+      right: 10%; 
+      width: 16%; 
+      z-index: 12; 
+    }
+
+    .mobile-ui .screen-main-m img.m-snoopy {
+      top: 46%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 70vw;
+      max-width: none;
+      z-index: 9;
+    }
+      
+    
+  
+    .play-button-m {
+      bottom: 11%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 78%;
+      height: 12%;
+    }
+  
+    .m-play {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+    }
+  
+    /* =========================
+       NOTIF SCREEN (matches mock)
+       ========================= */
+    .m-notif  { top: 32%; left: 50%; transform: translateX(-50%); width: 86%; z-index: 10; }
+    .m-bell   { top: 35%; left: 14%; width: 14%; z-index: 11; }
+    .m-flower { top: 28%; right: 12%; width: 16%; z-index: 9; }
+  
+    .open-trigger-m {
+      top: 43%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 14%;
+    }
+  
+    /* =========================
+       OPEN MESSAGE (matches mock)
+       ========================= */
+    .m-msgbox  { top: 23%; left: 50%; transform: translateX(-50%); width: 88%; z-index: 10; }
+    .m-flowerb { top: 20%; right: 10%; width: 16%; z-index: 11; }
+    .m-starb   { top: 28%; right: 16%; width: 12%; z-index: 11; }
+  
+    .letter-text-m {
+      position: absolute;
+      top: 31%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 76%;
+      margin: 0;
+  
+      font-family: "Jersey 25";
+      font-size: 20px;
+      color: #6f69a8;
+      z-index: 12;
+      line-height: 1.25;
+    }
+  
+    .okay-btn-m {
+      position: absolute;
+      bottom: 16%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 44%;
+      z-index: 20;
+      cursor: pointer;
+    }
+  
+    /* =========================
+       GAME SCREEN (mobile mock look)
+       ========================= */
+    .screen-game-m .game-ui { position: absolute; inset: 0; }
+  
+    .screen-game-m .gaming-logo {
+      position: absolute;
+      top: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 75%;
+      z-index: 10;
+    }
+  
+    .screen-game-m .exit-btn {
+      position: absolute;
+      top: 12%;
+      right: 6%;
+      width: 22%;
+      z-index: 12;
+    }
+  
+    .screen-game-m .reset-btn {
+      position: absolute;
+      top: 12%;
+      left: 6%;
+      width: 22%;
+      z-index: 12;
+    }
+  }
+  
+
+/* =========================
+   GAME SCREEN (DESKTOP)
+   ========================= */
+.desktop-ui .screen-game {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(0.96);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+  z-index: 70;
+}
+
+.desktop-ui .screen-game.active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.screen-game .game-bg {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.screen-game .game-ui {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+}
+
+.screen-game .gaming-logo {
+  position: absolute;
+  top: 10px;
+  left: 20%;
+  transform: translateX(-50%);
+  width: 1600px;
+  z-index: 9;
+}
+
+.screen-game .exit-btn {
+  position: absolute;
+  top: 120px;
+  right: 1280px;
+  width: 700px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.screen-game .reset-btn {
+  position: absolute;
+  top: 120px;
+  right: 1300px;
+  width: 700px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+
+/*exit button*/
+.screen-game .exit-btn {
+  position: absolute;
+  top: 120px;
+  right: 380px;
+  width: 700px;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.screen-game .stand {
+  position: absolute;
+  bottom: 0px;
+  right: 1900px;
+  width: 1700px;
+  z-index: 5;
+}
+
+.screen-game .snoop {
+  position: absolute;
+  bottom: 190px;
+  right: 2100px;
+  width: 1285px;
+  z-index: 5;
+}
+
+.desktop-ui .screen-game .c1 {
+  position: absolute;
+  bottom: 1498px;
+  left: 750px;
+  width: 785px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .c1:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c1:active { transform: scale(0.96); }
+
+.desktop-ui .screen-game .t1-1 {
+  position: absolute;
+  bottom: 1790px;
+  left: 520px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t1-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t1-1:active { transform: scale(0.90); }
+
+.desktop-ui .screen-game .t1-2 {
+  position: absolute;
+  bottom: 1790px;
+  left: 1564px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t1-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t1-2:active { transform: scale(0.90); }
+
+.screen-game .c2 {
+  position: absolute;
+  bottom: 750px;
+  left: 750px;
+  width: 785px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .c2:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c2:active { transform: scale(0.96); }
+
+.screen-game .t2-1 {
+  position: absolute;
+  bottom: 1030px;
+  left: 520px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t2-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t2-1:active { transform: scale(0.90); }
+
+.screen-game .t2-2 {
+  position: absolute;
+  bottom: 1030px;
+  left: 1570px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t2-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t2-2:active { transform: scale(0.90); }
+
+.screen-game .c3 {
+  position: absolute;
+  bottom: 8px;
+  left: 750px;
+  width: 785px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .c3:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c3:active { transform: scale(0.96); }
+
+.screen-game .t3-1 {
+  position: absolute;
+  bottom: 250px;
+  left: 520px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t3-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t3-1:active { transform: scale(0.90); }
+
+.screen-game .t3-2 {
+  position: absolute;
+  bottom: 250px;
+  left: 1548px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t3-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t3-2:active { transform: scale(0.90); }
+
+.screen-game .c6 {
+  position: absolute;
+  bottom: 8px;
+  right: 750px;
+  width: 785px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .c4:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c4:active { transform: scale(0.96); }
+
+.screen-game .t6-2 {
+  position: absolute;
+  bottom: 250px;
+  right: 520px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t4-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t4-2:active { transform: scale(0.90); }
+
+.screen-game .t6-1 {
+  position: absolute;
+  bottom: 250px;
+  right: 1548px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t4-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t4-1:active { transform: scale(0.90); }
+
+.screen-game .c5 {
+  position: absolute;
+  bottom: 750px;
+  right: 750px;
+  width: 785px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .c5:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c5:active { transform: scale(0.96); }
+
+.screen-game .t5-2 {
+  position: absolute;
+  bottom: 1030px;
+  right: 520px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t5-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t5-2:active { transform: scale(0.90); }
+
+.screen-game .t5-1 {
+  position: absolute;
+  bottom: 1030px;
+  right: 1548px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t5-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t5-1:active { transform: scale(0.90); }
+
+.screen-game .c4 {
+  position: absolute;
+  bottom: 1539px;
+  right: 750px;
+  width: 785px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .c6:hover { transform: scale(1.08); }
+.desktop-ui .screen-game .c6:active { transform: scale(0.96); }
+
+.screen-game .t4-2 {
+  position: absolute;
+  bottom: 1790px;
+  right: 520px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t6-2:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t6-2:active { transform: scale(0.90); }
+
+.screen-game .t4-1 {
+  position: absolute;
+  bottom: 1790px;
+  right: 1548px;
+  width: 205px;
+  z-index: 5;
+  cursor: pointer;
+}
+
+.desktop-ui .screen-game .t6-1:hover { transform: scale(1.18); }
+.desktop-ui .screen-game .t6-1:active { transform: scale(0.90); }
+
+.reset {
+  color: #D22F25;
+  font-family: "Jersey 25";
+  position: absolute;
+  top: 8.5%;
+  right: 23%;
+  transform: translateX(-50%);
+  margin: 0;
+  font-size: 125px;
+  z-index: 6;
+  cursor: pointer;
+}
+
+/* make hover smooth */
+.screen-game .reset-btn {
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+
+/* grow on hover */
+@media (hover: hover) and (pointer: fine) {
+  .screen-game .reset-btn:hover
+  {
+    transform: scale(1.08);
+  }
+
+  /* optional: slight “press” feel */
+  .screen-game .exit-btn:active,
+  .screen-game .exit:active {
+    transform: scale(0.96);
+  }
+}
+
+.exit {
+  color: #7E79B2;
+  font-family: "Jersey 25";
+  position: absolute;
+  top: 8.5%;
+  right: 10.5%;
+  margin: 0;
+  font-size: 125px;
+  z-index: 6;
+  cursor: pointer;
+}
+
+/* make hover smooth */
+.screen-game .exit-btn,
+.screen-game .exit {
+  transition: transform 0.2s ease;
+  transform-origin: center;
+}
+
+/* grow on hover */
+@media (hover: hover) and (pointer: fine) {
+  .screen-game .exit-btn:hover,
+  .screen-game .exit:hover {
+    transform: scale(1.08);
+  }
+
+  /* optional: slight “press” feel */
+  .screen-game .exit-btn:active,
+  .screen-game .exit:active {
+    transform: scale(0.96);
+  }
+}
+
+/* stack position */
+/* Snoopy + wearable layers stack */
+.screen-game .snoopy-stack {
+  position: absolute;
+  bottom: 190px;     /* same as your old .snoop */
+  right: 2100px;     /* same as your old .snoop */
+  width: 1285px;     /* same as your old .snoop */
+  z-index: 6;        /* above stand */
+}
+
+.screen-game .snoopy-stack img {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+}
+.desktop-ui .screen-game .snoopy-stack img.wear {
+  left: var(--x, 0px);
+  bottom: var(--y, 0px);
+  width: var(--w, 100%);
+}
+
+
+/* wear layers start hidden until chosen */
+/* Allow per-item offsets/scales for wear layers */
+.desktop-ui .screen-game .snoopy-stack .wear {
+  left: var(--x, 0px);
+  bottom: var(--y, 0px);
+  width: var(--w, 100%);
+}
+
+.screen-game .wear {
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.screen-game .wear.show {
+  opacity: 1;
+}
+
+
+/* clothes layering */
+/* --- SNOOPY WEARING LAYERS --- */
+.desktop-ui .screen-game .wear-1,
+.desktop-ui .screen-game .wear-2,
+.desktop-ui .screen-game .wear-3,
+.desktop-ui .screen-game .wear-4,
+.desktop-ui .screen-game .wear-5,
+.desktop-ui .screen-game .wear-6 {
+  position: absolute;
+  z-index: 10;            /* above snoopy */
+  pointer-events: none;   /* never block clicking */
+  opacity: 0;             /* hidden until chosen */
+  transform-origin: center;
+}
+
+/* main.js adds .show when chosen */
+.desktop-ui .screen-game .wear-1.show,
+.desktop-ui .screen-game .wear-2.show,
+.desktop-ui .screen-game .wear-3.show,
+.desktop-ui .screen-game .wear-4.show,
+.desktop-ui .screen-game .wear-5.show,
+.desktop-ui .screen-game .wear-6.show {
+  opacity: 1;
+}
+
+
+
+
+/* clothes */
+
+.desktop-ui .screen-game .slot-item { pointer-events: auto; z-index: 6; cursor: pointer; }
+.desktop-ui .screen-game .t1-1, .desktop-ui .screen-game .t1-2,
+.desktop-ui .screen-game .t2-1, .desktop-ui .screen-game .t2-2,
+.desktop-ui .screen-game .t3-1, .desktop-ui .screen-game .t3-2,
+.desktop-ui .screen-game .t4-1, .desktop-ui .screen-game .t4-2,
+.desktop-ui .screen-game .t5-1, .desktop-ui .screen-game .t5-2,
+.desktop-ui .screen-game .t6-1, .desktop-ui .screen-game .t6-2 {
+  z-index: 10;
+}
+
+
+.desktop-ui .screen-game .santa-hat {
+  position: absolute;
+  bottom: 1670px;
+  left: 830px;
+
+  width: var(--w, 605px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
+  z-index: 5;
+  pointer-events: none; /* keep arrows clickable */
+}
+
+.desktop-ui .screen-game .santa-hat[data-item="my-melo"] {
+  --x: 130px;     /* right/left */
+  --y: 40px;    /* down/up (positive = down) */
+  --w: 375px;   /* size */
+}
+
+.desktop-ui .screen-game .santa-hat[data-item="snorlax"] {
+  --x: 38px;
+  --y: 30px;
+  --w: 587px;
+}
+
+
+
+.desktop-ui .screen-game .red-sweat {
+  position: absolute;
+  bottom: 900px;
+  left: 820px;
+
+  width: var(--w, 650px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
+  z-index: 5;
+  pointer-events: none;
+  height: auto;
+}
+
+.desktop-ui .screen-game .red-sweat[data-item="pink-sweat"] {
+  --x: -10px; /* right and left */
+  --y: -10px; /* positive-- up negative-- down */
+  --w: 645px; /* size */
+}
+
+.desktop-ui .screen-game .red-sweat[data-item="purple-sweat"] {
+  --x: 0px;
+  --y: 0px;
+  --w: 650px;
+}
+
+
+
+.desktop-ui .screen-game .red-jack {
+  position: absolute;
+  bottom: 100px;
+  left: 870px;
+
+  width: var(--w, 540px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
+  z-index: 5;
+  pointer-events: none;
+  height: auto;
+}
+
+.desktop-ui .screen-game .red-jack[data-item="black-jack"] {
+  --x: -10px;
+  --y: 0px;
+  --w: 540px;
+}
+
+.desktop-ui .screen-game .red-jack[data-item="purple-jack"] {
+  --x: -20px;
+  --y: 0px;
+  --w: 525px;
+}
+
+
+
+.desktop-ui .screen-game .goggles {
+  position: absolute;
+  bottom: 1758px;
+  right: 842px;
+
+  width: var(--w, 585px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
+  z-index: 5;
+  pointer-events: none;
+  height: auto;
+}
+
+.desktop-ui .screen-game .goggles[data-item="pink-ear"] {
+  --x: 0px;
+  --y: 80px;
+  --w: 550px;
+}
+
+.desktop-ui .screen-game .goggles[data-item="teddy"] {
+  --x: -84px;
+  --y: 98px;
+  --w: 405px;
+}
+
+
+
+
+.desktop-ui .screen-game .red-hand {
+  position: absolute;
+  bottom: 931px;
+  right: 840px;
+
+  width: var(--w, 585px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
+  z-index: 5;
+  pointer-events: none;
+  height: auto;
+}
+
+.desktop-ui .screen-game .red-hand[data-item="glasses"] {
+  --x: 8px;
+  --y: -88px;
+  --w: 585px;
+}
+
+.desktop-ui .screen-game .red-hand[data-item="purple-hand"] {
+  --x: 0px;
+  --y: 0px;
+  --w: 585px;
+}
+
+
+
+
+.desktop-ui .screen-game .gingerbread {
+  position: absolute;
+  bottom: 83px;
+  right: 814px;
+
+  width: var(--w, 660px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+
+  z-index: 5;
+  pointer-events: none;
+  height: auto;
+}
+
+.desktop-ui .screen-game .gingerbread[data-item="black-beanie"] {
+  --x: -69px;
+  --y: -63px;
+  --w: 505px;
+}
+
+.desktop-ui .screen-game .gingerbread[data-item="purple-snowboard"] {
+  --x: -30px;
+  --y: 36px;
+  --w: 560px;
+}
+
+/*styling for the clothes on the gaming screeen!!*/
+/* gaming screen item wearing*/
+.desktop-ui .screen-game .wear-1[data-item="santa-hat"] {
+  --x: 0px;
+  --y: -1320px;
+  --w: 780px;
+  --r: -10deg;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-2[data-item="red-sweat"] {
+  --x: 419px;
+  --y: -580px;
+  --w: 430px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-3[data-item="red-jack"] {
+  --x: 419px;
+  --y: -580px;
+  --w: 430px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-4[data-item="goggles"] {
+  --x: 300px;
+  --y: -1220px;
+  --w: 540px;
+  --r: -15deg;
+  z-index: 61;
+}
+
+.desktop-ui .screen-game .wear-5[data-item="red-hand"] {
+  --x: 470px;
+  --y: -585px;
+  --w: 163px;
+  --r: +5deg;
+  z-index: 62;
+}
+
+.desktop-ui .screen-game .wear-6[data-item="gingerbread"] {
+  --x: 710px;
+  --y: -455px;
+  --w: 623px;
+  --r: +15deg;
+  z-index: 62;
+}
+
+
+
+/* second section for the clothes*/
+.desktop-ui .screen-game .wear-1[data-item="my-melo"]{
+  --x: 840px;
+  --y: -455px;
+  --w: 383px;
+  --r: +7deg;
+  z-index: 62;
+}
+
+
+.desktop-ui .screen-game .wear-2[data-item="pink-sweat"] {
+  --x: 439px;
+  --y: -580px;
+  --w: 380px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-3[data-item="black-jack"] {
+  --x: 410px;
+  --y: -580px;
+  --w: 430px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-4[data-item="pink-ear"] {
+  --x: 140px;
+  --y: -961px;
+  --w: 520px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-5[data-item="glasses"] {
+  --x: 390px;
+  --y: -1220px;
+  --w: 540px;
+  --r: -12deg;
+  z-index: 61;
+}
+
+.desktop-ui .screen-game .wear-6[data-item="black-beanie"] {
+  --x: 84px;
+  --y: -1320px;
+  --w: 580px;
+  --r: -20deg;
+  z-index: 60;
+}
+
+
+/* third section for the clothes*/
+.desktop-ui .screen-game .wear-1[data-item="snorlax"] {
+  --x: 710px;
+  --y: -455px;
+  --w: 623px;
+  --r: +15deg;
+  z-index: 62;
+}
+
+.desktop-ui .screen-game .wear-2[data-item="purple-sweat"] {
+  --x: 439px;
+  --y: -580px;
+  --w: 380px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-3[data-item="purple-jack"] {
+  --x: 419px;
+  --y: -580px;
+  --w: 430px;
+  z-index: 60;
+}
+
+.desktop-ui .screen-game .wear-4[data-item="teddy"] {
+  --x: 75px;
+  --y: -455px;
+  --w: 403px;
+  --r: -8deg;
+  z-index: 62;
+}
+
+.desktop-ui .screen-game .wear-5[data-item="purple-hand"] {
+  --x: 470px;
+  --y: -585px;
+  --w: 163px;
+  --r: +5deg;
+  z-index: 62;
+}
+
+.desktop-ui .screen-game .wear-6[data-item="purple-snowboard"] {
+  --y: -85px;
+  --r: -8deg;
+  z-index:2;
+}
+
+
+
+
+
+/* wearing */
+/* base position for the hat-wearing layer */
+.screen-game .wear-1{
+  position:absolute;
+  left: 240px;
+  bottom: 820px;
+
+  width: var(--w, 600px);
+  transform: translate(var(--x, 0px), var(--y, 0px));
+  pointer-events:none;
+  opacity:0;
+}
+.screen-game .wear-1.show{ opacity:1; }
+
+/* per-item adjustments */
+.screen-game .wear-1[data-item="my-melo"]{ --x: 20px; --y: 10px; --w: 20px; }
+.screen-game .wear-1[data-item="snorlax"]{ --x: 0px;  --y: 0px;  --w: 110px; }
+
+.desktop-ui .screen-game .snoopy-stack img.wear {
+  left: 0;
+  bottom: 0;
+  width: var(--w, 100%);
+  transform:
+    translate(var(--x, 0px), var(--y, 0px))
+    rotate(var(--r, 0deg));
+  transform-origin: center;
+}
+
